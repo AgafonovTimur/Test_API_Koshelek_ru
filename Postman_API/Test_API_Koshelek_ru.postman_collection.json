@@ -443,7 +443,7 @@
 					"response": []
 				},
 				{
-					"name": "1_GetBalance_Get_Two_Curencys_Correct",
+					"name": "1_GetBalance_Get_Two_Curencies_Correct",
 					"event": [
 						{
 							"listen": "test",
@@ -1028,7 +1028,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n  \"name\": \"nokia\",\r\n  \"model\": \"3310\",\r\n  \"type\": \"TYPE_UNKNOWN\",\r\n  \"status\": \"DEVICE_STATUS_ACTIVE\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
