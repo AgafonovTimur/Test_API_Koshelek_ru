@@ -12,7 +12,7 @@ class TestOne:
                                 headers=headers1)
 
         print(json.dumps(dict(response.headers)))
-        print(response.url)
+        # print(response.url)
         print(response.status_code)
         print(response.headers)
         print(json.dumps(response.json()))
