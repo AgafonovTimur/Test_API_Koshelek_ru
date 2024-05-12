@@ -12,11 +12,12 @@ class TestOne:
                                 headers=headers1)
 
         print(json.dumps(dict(response.headers)))
-        # print(response.url)
+        print(response.url)
         print(response.status_code)
         print(response.headers)
         print(json.dumps(response.json()))
         print(response.text)
         assert response.status_code == 200
         assert response.json()["result"]["success"] == True
+        assert isinstance(response.json()["itemsCount"], int)
         print(response.json()["result"]["success"])
