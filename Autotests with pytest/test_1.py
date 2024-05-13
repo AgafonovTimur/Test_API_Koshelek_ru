@@ -1,6 +1,5 @@
 # request number of devices
 import json
-
 import requests
 import testVariables
 

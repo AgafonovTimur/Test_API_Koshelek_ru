@@ -1,9 +1,7 @@
 # add new device
 import json
-
 import requests
 import testVariables
-
 
 class TestTwo:
     def test_2(self):
