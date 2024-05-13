@@ -1,12 +1,11 @@
 # add new device
 import json
-
 import requests
 import testVariables
 
 
 class TestTwo:
-    def test_2(self):
+    def test_add_new_device(self):
         headers1 = {'Content-Type': 'application/json', 'ClientId': testVariables.clientId}
         payload1 = {
             "name": "siemens mobile",

@@ -6,7 +6,7 @@ import testVariables
 
 
 class TestOne:
-    def test_1(self):
+    def test_ReqNumberOfDevices(self):
         headers1 = {'Content-Type': 'application/json', 'ClientId': testVariables.clientId}
         response = requests.get(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
                                 headers=headers1)
