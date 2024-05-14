@@ -1,14 +1,14 @@
 # request number of devices
+import pytest
 import json
 import requests
 import testVariables
 
 
-def test_number_of_devices():
-    headers1 = {'Content-Type': 'application/json', 'ClientId': testVariables.clientId}
+def test_list_of_devices():
     response = requests.get(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
-                            headers=headers1)
-
+                            headers=testVariables.request_headers)
+    print("\033[92m")
     print(json.dumps(dict(response.headers)))
     print(response.url)
     print(response.status_code)
