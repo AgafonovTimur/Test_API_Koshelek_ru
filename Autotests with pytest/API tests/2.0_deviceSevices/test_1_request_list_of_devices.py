@@ -11,11 +11,12 @@ def test_list_of_devices():
     print("\033[92m")
     print(json.dumps(dict(response.headers)))
     print(response.url)
-    print(response.status_code)
+    print("response status code: " + str(response.status_code))
     print(response.headers)
     print(json.dumps(response.json()))
     print(response.text)
     assert response.status_code == 200
     assert response.json()["result"]["success"] == True
     assert isinstance(response.json()["itemsCount"], int)
-    print(response.json()["result"]["success"])
+    print("response.json \"success\": " + str(response.json()["result"]["success"]))
+
