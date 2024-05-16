@@ -1,5 +1,5 @@
 # add new device
-import pytest
+import os
 import json
 import requests
 import testVariables
@@ -21,7 +21,7 @@ class TestClass:
         ar_name = response.json().get("name")
         # expected response name
         er_name = "siemens mobile"
-        print("\033[92m")
+        testVariables.change_console_color_and_add_name_of_test(os.path.basename(__file__))
         print(json.dumps(response.json()))
         print("response status code: " + str(response.status_code))
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
@@ -31,3 +31,4 @@ class TestClass:
         print("response.json \"success\": " + str(response.json()["result"]["success"]))
         assert response.json()["result"]["errorData"] == {}
         print("response.json \"errorData\": " + str(response.json()["result"]["errorData"]))
+

@@ -1,5 +1,5 @@
 # add new device with wrong name
-import pytest
+import os
 import json
 import requests
 import testVariables
@@ -21,7 +21,7 @@ class TestClass:
         ar_name = response.json().get("name")
         # expected response name
         er_name = "siemens mobile"
-        print("\033[92m")
+        print("\033[92m" + "\n" + os.path.basename(__file__))
         print(json.dumps(response.json()))
         print("response status code: " + str(response.status_code))
         # response status code must be 4xx and it's a bug, but test made to pass this assert
