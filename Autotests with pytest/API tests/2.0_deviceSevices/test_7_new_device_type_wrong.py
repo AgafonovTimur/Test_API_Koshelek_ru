@@ -21,8 +21,13 @@ class TestClass2:
         testVariables.change_console_color_and_add_name_of_test(os.path.basename(__file__))
         print(json.dumps(response.json()))
         print("response status code: " + str(response.status_code))
-        assert response.status_code == 400, f"Expected 400, got {response.status_code}"
-        assert response.json()["code"] == 3, f"Expected 3, got {response.json()['code']}"
-        assert response.json()["details"] == [], f"Expected [], got {response.json()['details']}"
-        assert response.json()[
-                   "message"] == "Object reference not set to an instance of an object.", f"Expected 'Object reference not set to an instance of an object.', got {response.json()['message']}"
+        assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+        assert response.json()['result'][
+                   'success'] == False, f"Expected False, got {response.json()['result']['success']}"
+        print(response.json()['result']['success'])
+        assert response.json()['result'][
+                   'error'] == "RequestNotValid", f"Expected False, got {response.json()['result']['error']}"
+        print(response.json()['result']['error'])
+        assert response.json()['result'][
+                   'ErrorCode'] == 900, f"Expected False, got {response.json()['result']['ErrorCode']}"
+        print(response.json()['result']['ErrorCode'])
