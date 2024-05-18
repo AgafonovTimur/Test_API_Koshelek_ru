@@ -20,10 +20,10 @@ class TestClass:
     def test_add_new_device(self):
         request_payload = self.request_body
         response = requests.post(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
-                                 headers=testVariables.request_headers, data=json.dumps(request_payload))
+                                 headers=testVariables.request_headers, json=request_payload)
         device_id = json.dumps(response.json().get("id"))
         # print("\033[92m")
-        testVariables.change_console_color_and_add_name_of_test(os.path.basename(__file__))
+        testVariables.ccc(os.path.basename(__file__))
         print("response status code: " + str(response.status_code))
         # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request

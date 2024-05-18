@@ -13,12 +13,12 @@ class TestClass:
     def test_add_new_device(self):
         request_payload = self.request_body
         response = requests.post(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
-                                 headers=testVariables.request_headers, data=json.dumps(request_payload))
+                                 headers=testVariables.request_headers, json=request_payload)
         # actual response name
         ar_name = response.json().get("name")
         # expected response name
         er_name = "siemens mobile"
-        testVariables.change_console_color_and_add_name_of_test(os.path.basename(__file__))
+        testVariables.ccc(os.path.basename(__file__))
         print(json.dumps(response.json()))
         print("response status code: " + str(response.status_code))
         # response status code must be 4xx and it's a bug, but test made to pass this assert
