@@ -30,3 +30,4 @@ class TestClass2:
         assert response.json()['result'][
                    'ErrorCode'] == 900, f"Expected False, got {response.json()['result']['ErrorCode']}"
         print(response.json()['result']['ErrorCode'])
+        print("git retest")
