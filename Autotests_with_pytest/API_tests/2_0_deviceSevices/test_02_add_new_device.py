@@ -15,9 +15,9 @@ class TestClass:
 
     def test_add_new_device(self):
         request_payload = self.request_body
-        response = requests.post(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
+        response = requests.post(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
                                  headers=testVariables.request_headers, json=request_payload)
-        # actual response name
+        # # actual response name
         ar_name = response.json().get("name")
         # expected response name
         er_name = "siemens mobile"

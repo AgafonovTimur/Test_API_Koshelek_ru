@@ -19,7 +19,7 @@ class TestClass:
 
     def test_add_new_device(self):
         request_payload = self.request_body
-        response = requests.post(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
+        response = requests.post(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
                                  headers=testVariables.request_headers, json=request_payload)
         device_id = json.dumps(response.json().get("id"))
         # print("\033[92m")

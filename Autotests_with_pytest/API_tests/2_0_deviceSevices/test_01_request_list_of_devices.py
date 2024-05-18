@@ -6,7 +6,7 @@ import testVariables
 
 
 def test_list_of_devices():
-    response = requests.get(testVariables.baseUrl + "/v1/devices?signature=" + testVariables.clientSecret,
+    response = requests.get(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
                             headers=testVariables.request_headers)
     testVariables.ccc(os.path.basename(__file__))
     print(json.dumps(dict(response.headers)))
