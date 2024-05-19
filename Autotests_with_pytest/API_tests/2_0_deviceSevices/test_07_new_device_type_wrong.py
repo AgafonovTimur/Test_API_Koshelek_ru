@@ -16,10 +16,10 @@ class TestClass2:
 
     def test_add_new_device(self):
         request_payload = self.request_body
-        response = requests.post(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-                                 headers=testVariables.request_headers, json=request_payload)
-        testVariables.ccc(os.path.basename(__file__))
-        print(json.dumps(response.json()))
+        response = requests.post(
+            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
+            headers=testVariables.request_headers, json=request_payload)
+        testVariables.ccc(os.path.basename(__file__), response)
         print("response status code: " + str(response.status_code))
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
         assert response.json()['result'][

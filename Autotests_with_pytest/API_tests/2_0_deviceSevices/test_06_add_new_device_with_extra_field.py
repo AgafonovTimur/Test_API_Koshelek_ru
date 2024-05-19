@@ -5,7 +5,6 @@ import testVariables
 import os
 
 
-device_id = 0
 
 
 class TestClass:
@@ -19,11 +18,11 @@ class TestClass:
 
     def test_add_new_device(self):
         request_payload = self.request_body
-        response = requests.post(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-                                 headers=testVariables.request_headers, json=request_payload)
+        response = requests.post(
+            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
+            headers=testVariables.request_headers, json=request_payload)
         device_id = json.dumps(response.json().get("id"))
-        # print("\033[92m")
-        testVariables.ccc(os.path.basename(__file__))
+        testVariables.ccc(os.path.basename(__file__), response)
         print("response status code: " + str(response.status_code))
         # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request

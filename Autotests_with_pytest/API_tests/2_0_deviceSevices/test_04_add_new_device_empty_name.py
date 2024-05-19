@@ -8,18 +8,18 @@ import testVariables
 class TestClass:
     request_body = {
 
-        }
+    }
 
     def test_add_new_device(self):
         request_payload = self.request_body
-        response = requests.post(f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-                                 headers=testVariables.request_headers, json=request_payload)
+        response = requests.post(
+            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
+            headers=testVariables.request_headers, json=request_payload)
         # actual response name
         ar_name = response.json().get("name")
         # expected response name
         er_name = "siemens mobile"
-        testVariables.ccc(os.path.basename(__file__))
-        print(json.dumps(response.json()))
+        testVariables.ccc(os.path.basename(__file__), response)
         print("response status code: " + str(response.status_code))
         # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request
