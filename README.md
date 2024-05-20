@@ -9,3 +9,4 @@ to run only test with no info : set debug_true = False
 in file testVariables
 
 in debug : yellow - response json, green : debug info from prints
+
