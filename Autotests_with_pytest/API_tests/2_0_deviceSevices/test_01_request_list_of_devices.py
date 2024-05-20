@@ -9,12 +9,16 @@ def test_list_of_devices():
     response = requests.get(
         f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
         headers=testVariables.request_headers)
-    testVariables.ccc(os.path.basename(__file__), response)
-    testVariables.debug_print(json.dumps(dict(response.headers)))
-    testVariables.debug_print(response.url)
-    testVariables.debug_print(f"response status code: {response.status_code}")
-    assert response.status_code == 200
-    assert response.json()["result"]["success"] == True
-    assert isinstance(response.json()["itemsCount"], int)
-    testVariables.debug_print("response.json \"success\": " + str(response.json()["result"]["success"]))
 
+    # debug log displays if debug_true = True
+    if testVariables.debug_true == True:
+        print("\033[92m" + "\n" + os.path.basename(__file__) + "\n" + json.dumps(json.loads(response.text), indent=2))
+        print(f"response status code: {response.status_code}")
+        print(response.url)
+        print(json.dumps(dict(response.headers)))
+        print(response.url)
+        print("response.json \"success\": " + str(response.json()["result"]["success"]))
+
+    assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+    assert response.json()["result"]["success"] == True, f"Expected True, got {response.json()['result']['success']}"
+    assert isinstance(response.json()["itemsCount"], int), f"Expected int, got {type(response.json()['itemsCount'])}"

@@ -12,8 +12,18 @@ def test_correct_auth():
     response = requests.get(
         f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
         headers=request_headers)
-    testVariables.ccc(os.path.basename(__file__), response)
-    assert response.status_code == 200
-    assert response.json()["result"]["success"] == False
-    assert response.json()["result"]["error"] == "ApiKeyNotFound"
-    assert response.json()["result"]["ErrorCode"] == 125
+
+    # debug log displays if debug_true = True
+    if testVariables.debug_true == True:
+        print("\033[92m" + "\n" + os.path.basename(__file__) + "\n" + json.dumps(json.loads(response.text), indent=2))
+        print(f"response status code: {response.status_code}")
+        print(response.url)
+        print(response.json()["result"]["success"])
+        print(response.json()["result"]["error"])
+        print(response.json()["result"]["ErrorCode"])
+
+    assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+    assert response.json()["result"]["success"] == False, f"Expected False, got {response.json()['result']['success']}"
+    assert response.json()["result"][
+               "error"] == "ApiKeyNotFound", f"Expected ApiKeyNotFound, got {response.json()['result']['error']}"
+    assert response.json()["result"]["ErrorCode"] == 125, f"Expected 125, got {response.json()['result']['ErrorCode']}"
