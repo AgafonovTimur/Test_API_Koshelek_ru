@@ -8,7 +8,16 @@ request_headers = {'Content-Type': 'application/json', 'ClientId': clientId}
 currency = "currency=RUB"
 
 
-# change_console_color_and_add_name_of_test and print response in json
+# change_console_color_and_add_name_of_test and testVariables.testVariables.debug_print response in json
 def ccc(name_of_test, response):
-    print("\033[92m" + "\n" + name_of_test)
-    print(json.dumps(json.loads(response.text), indent=2))
+    debug_true = True
+    if debug_true:
+        print("\033[92m" + "\n" + name_of_test)
+        print(json.dumps(json.loads(response.text), indent=2))
+
+
+# debug testVariables.debug_print
+def debug_print(debug_params):
+    debug_true = True
+    if debug_true:
+        print(debug_params)

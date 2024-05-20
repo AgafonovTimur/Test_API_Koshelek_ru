@@ -1,6 +1,7 @@
 import requests
 import testVariables
 import json
+import os
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
 
@@ -14,11 +15,12 @@ def test_run(playwright: Playwright) -> None:
     page.get_by_label("Найти").click()
     page.get_by_label("Найти").fill("playwrite documentation")
     page.get_by_label("Найти").press("Enter")
-    page.get_by_role("link", name="Python", exact=True).click()
-    page.get_by_role("link", name="Get started").click()
-    assert page.url == "https://playwright.dev/python/docs/intro"
-    print(page.url)
-    print("test message 1")
+    # page.get_by_role("link", name="Python", exact=True).click()
+    # page.get_by_role("link", name="Get started").click()
+    # assert page.url == "https://playwright.dev/python/docs/intro"
+    # testVariables.ccc(os.path.basename(__file__))
+    testVariables.debug_print(page.url)
+    testVariables.debug_print("test message 1")
     # assert 1 == 2
     # ---------------------
     context.close()

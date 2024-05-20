@@ -19,13 +19,13 @@ class TestClass2:
             f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
             headers=testVariables.request_headers, json=request_payload)
         testVariables.ccc(os.path.basename(__file__), response)
-        print("response status code: " + str(response.status_code))
+        testVariables.debug_print("response status code: " + str(response.status_code))
         assert response.json()['result'][
                    'success'] == False, f"Expected False, got {response.json()['result']['success']}"
-        print(response.json()['result']['success'])
+        testVariables.debug_print(response.json()['result']['success'])
         assert response.json()['result'][
                    'error'] == "RequestNotValid", f"Expected False, got {response.json()['result']['error']}"
-        print(response.json()['result']['error'])
+        testVariables.debug_print(response.json()['result']['error'])
         assert response.json()['result'][
                    'ErrorCode'] == 900, f"Expected False, got {response.json()['result']['ErrorCode']}"
-        print(response.json()['result']['ErrorCode'])
+        testVariables.debug_print(response.json()['result']['ErrorCode'])
