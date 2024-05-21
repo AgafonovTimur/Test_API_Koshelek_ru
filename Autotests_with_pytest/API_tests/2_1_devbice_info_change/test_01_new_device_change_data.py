@@ -2,8 +2,7 @@
 import os
 import json
 import requests
-import test_params
-import debug_log_true
+from test_library import test_params, debug_log_true
 
 
 class TestClass:

@@ -1,9 +1,4 @@
-import requests
-import test_params
-import json
-import os
-import re
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Playwright
 
 
 def test_run(playwright: Playwright) -> None:
@@ -12,10 +7,10 @@ def test_run(playwright: Playwright) -> None:
     page = context.new_page()
 
     # debug log displays if debug_true = True
-    if test_params.debug_true == True:
-        print("\033[92m" + "\n" + os.path.basename(__file__))
-        print(page.url)
-        print("test message 1")
+    # if debug_log_true.debug_true == True:
+    #     debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+    #
+    #     print("test message 1")
 
     page.goto("https://www.google.com/")
     assert page.url == "https://www.google.com/"

@@ -1,7 +1,6 @@
 # add new device with field missing
-import debug_log_true
 import requests
-import test_params
+from test_library import test_params, debug_log_true
 import os
 
 

@@ -1,8 +1,7 @@
 # check if authorization is correct
 import os
-import debug_log_true
 import requests
-import test_params
+from test_library import test_params, debug_log_true
 
 
 def test_correct_auth():  # sourcery skip: extract-method

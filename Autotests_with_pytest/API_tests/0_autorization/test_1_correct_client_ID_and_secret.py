@@ -1,8 +1,7 @@
 # check if authorization is correct
 import os
 import requests
-import test_params
-import debug_log_true
+from test_library import test_params, debug_log_true
 
 
 def test_correct_auth():
