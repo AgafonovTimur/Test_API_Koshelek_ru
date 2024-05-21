@@ -2,8 +2,8 @@
 import os
 import json
 import requests
-import testVariables
-import debug_log_true 
+import test_params
+import debug_log_true
 
 
 class TestClass:
@@ -18,8 +18,8 @@ class TestClass:
         request_payload = self.request_body
 
         response = requests.post(
-            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-            headers=testVariables.request_headers, json=request_payload)
+            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+            headers=test_params.request_headers, json=request_payload)
 
         device_id = json.dumps(response.json().get("id"))
 
@@ -34,17 +34,18 @@ class TestClass:
                    "errorData"] == {}, f"Expected {{}}, got {response.json()['result']['errorData']}"
 
 ##########################################################################################################
-        
+
         #  get requsites
         response2 = requests.get(
-            f"{testVariables.baseUrl}/v1/devices/{device_id}?signature={testVariables.clientSecret}",
-            headers=testVariables.request_headers, json=request_payload)
+            f"{test_params.baseUrl}/v1/devices/{device_id}?signature={test_params.clientSecret}",
+            headers=test_params.request_headers, json=request_payload)
 
         device_id2 = json.dumps(response2.json().get("id"))
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code, response2.url)
+            debug_log_true.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
+                                      response2.url)
             print(f"name: {response2.json().get("name")}")
             print(f"model: {response2.json().get("model")}")
             print(f"device_id: {response2.json().get("id")}")

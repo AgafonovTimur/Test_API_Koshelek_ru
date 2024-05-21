@@ -2,7 +2,7 @@
 import os
 import debug_log_true
 import requests
-import testVariables
+import test_params
 
 
 class TestClass:
@@ -14,8 +14,8 @@ class TestClass:
         request_payload = self.request_body
 
         response = requests.post(
-            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-            headers=testVariables.request_headers, json=request_payload)
+            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+            headers=test_params.request_headers, json=request_payload)
 
         ar_name = response.json().get("name")  # actual response name
         er_name = "siemens mobile"  # expected response name

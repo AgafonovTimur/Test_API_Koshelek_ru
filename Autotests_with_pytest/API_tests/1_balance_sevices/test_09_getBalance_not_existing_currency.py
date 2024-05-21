@@ -2,15 +2,15 @@
 import os
 import debug_log_true
 import requests
-import testVariables
+import test_params
 
 
 def test_correct_auth():
     currency_rub = "currency=JFL"
 
     response = requests.get(
-        f"{testVariables.baseUrl}/v1/balances?{currency_rub}&signature={testVariables.clientSecret}",
-        headers=testVariables.request_headers)
+        f"{test_params.baseUrl}/v1/balances?{currency_rub}&signature={test_params.clientSecret}",
+        headers=test_params.request_headers)
 
     # debug log displays if debug_true = True
     if debug_log_true.debug_true == True:

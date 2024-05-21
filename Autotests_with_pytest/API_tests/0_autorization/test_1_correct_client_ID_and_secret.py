@@ -1,14 +1,14 @@
 # check if authorization is correct
 import os
 import requests
-import testVariables
+import test_params
 import debug_log_true
 
 
 def test_correct_auth():
     response = requests.get(
-        f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-        headers=testVariables.request_headers)
+        f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+        headers=test_params.request_headers)
     print(response)
 
     if debug_log_true.debug_true == True:

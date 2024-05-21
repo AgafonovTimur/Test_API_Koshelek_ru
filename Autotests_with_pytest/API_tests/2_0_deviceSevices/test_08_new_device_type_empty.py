@@ -1,7 +1,7 @@
 # new device - empty type
 import debug_log_true
 import requests
-import testVariables
+import test_params
 import os
 
 
@@ -17,8 +17,8 @@ class TestClass2:
         request_payload = self.request_body
 
         response = requests.post(
-            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-            headers=testVariables.request_headers, json=request_payload)
+            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+            headers=test_params.request_headers, json=request_payload)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

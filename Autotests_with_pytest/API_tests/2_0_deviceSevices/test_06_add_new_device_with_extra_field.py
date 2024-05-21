@@ -1,7 +1,7 @@
 # add new device with extra field in request body
 import debug_log_true
 import requests
-import testVariables
+import test_params
 import os
 import json
 
@@ -19,8 +19,8 @@ class TestClass:
         request_payload = self.request_body
 
         response = requests.post(
-            f"{testVariables.baseUrl}/v1/devices?signature={testVariables.clientSecret}",
-            headers=testVariables.request_headers, json=request_payload)
+            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+            headers=test_params.request_headers, json=request_payload)
 
         device_id = json.dumps(response.json().get("id"))
 
