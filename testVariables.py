@@ -5,4 +5,4 @@ clientSecret = "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d48
 baseUrl = "https://p2psys-publicoffice.konomik.com"
 request_headers = {'Content-Type': 'application/json', 'ClientId': clientId}
 currency = "currency=RUB"
-debug_true = True
+

@@ -1,6 +1,6 @@
 # add new device with empty name
 import os
-import json
+import debug_log_true
 import requests
 import testVariables
 
@@ -21,17 +21,10 @@ class TestClass:
         er_name = "siemens mobile"  # expected response name
 
         # debug log displays if debug_true = True
-        if testVariables.debug_true == True:
-            print(
-                "\033[92m" + "\n" + os.path.basename(__file__) + "\n" + "\033[93m" + json.dumps(
-                    json.loads(response.text), indent=2))
-            print("\033[92m" + f"response status code: {response.status_code}")
-            print(response.url)
+        if debug_log_true.debug_true == True:
+            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
             print(f"response name: {ar_name} is empty and is incorrect. All good")
-            print("response.json \"success\": " + str(response.json()["result"]["success"]))
-            print("response.json \"error\": " + str(response.json()["result"]["error"]))
 
-        # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
         assert ar_name != er_name, f"Phone name is correct, its {ar_name}"

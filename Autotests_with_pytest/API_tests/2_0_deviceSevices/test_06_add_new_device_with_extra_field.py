@@ -1,8 +1,9 @@
 # add new device with extra field in request body
-import json
+import debug_log_true
 import requests
 import testVariables
 import os
+import json
 
 
 class TestClass:
@@ -24,15 +25,9 @@ class TestClass:
         device_id = json.dumps(response.json().get("id"))
 
         # debug log displays if debug_true = True
-        if testVariables.debug_true == True:
-            print(
-                "\033[92m" + "\n" + os.path.basename(__file__) + "\n" + "\033[93m" + json.dumps(
-                    json.loads(response.text), indent=2))
-            print("\033[92m" + f"response status code: {response.status_code}")
-            print(response.url)
-            print("response.json \"success\": " + str(response.json()["result"]["success"]))
-            print("response.json \"errorData\": " + str(response.json()["result"]["errorData"]))
-            print("response.json \"id\": " + str(response.json().get("id")))
+        if debug_log_true.debug_true == True:
+            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            print(f"device_id: {device_id}")
 
         # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request
