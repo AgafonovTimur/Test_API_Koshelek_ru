@@ -3,9 +3,10 @@ import os
 import json
 import requests
 from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
 
 
-class TestClass:
+class Test:
     request_body = {
         "name": "Nokia",
         "model": "5100",
@@ -24,7 +25,7 @@ class TestClass:
 
         #  create new device
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
             print("device_id: " + str(response.json().get("id")))
             print("name: " + str(response.json().get("name")))
 
@@ -36,7 +37,7 @@ class TestClass:
         assert device_id != 0 or device_id is not None, f"Expected not 0 or None, got {device_id}"
         assert response.json()["name"] == "Nokia", f"Expected Nokia, got {response.json()['name']}"
 
-##########################################################################################################
+        ##########################################################################################################
 
         #  delete device
         response2 = requests.delete(
@@ -45,8 +46,8 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
-                                      response2.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response2.json(), response2.status_code,
+                                 response2.url)
 
         assert response2.status_code == 200, f"Expected 200, got {response2.status_code}"
         assert response2.json()["result"][
@@ -54,7 +55,7 @@ class TestClass:
         assert response2.json()["result"][
                    "errorData"] == {}, f"Expected {{}}, got {response2.json()['result']['errorData']}"
 
-################################################################################################################
+        ################################################################################################################
 
         # check that device is not found
         response3 = requests.get(
@@ -63,8 +64,9 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response3.json(), response3.status_code,
-                                      response3.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response3.json(), response3.status_code,
+                                 response3.url)
+
             print("name: " + str(response3.json()["name"]))
             print("model: " + str(response3.json()["model"]))
 

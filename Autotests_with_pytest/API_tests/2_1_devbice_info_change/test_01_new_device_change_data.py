@@ -3,9 +3,10 @@ import os
 import json
 import requests
 from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
 
 
-class TestClass:
+class Test:
     request_body = {
         "name": "motorolla",
         "model": "e350",
@@ -31,7 +32,7 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
             print("name: " + str(response.json().get("name")))
             print(f"device_id: {device_id}")
 
@@ -43,7 +44,7 @@ class TestClass:
         assert device_id != 0 or device_id is not None, f"Expected not 0 or None, got {device_id}"
         assert response.json()["name"] == "motorolla", f"Expected motorolla, got {response.json()['name']}"
 
-#################################################################################################################
+        #################################################################################################################
 
         # change device info
         response2 = requests.put(
@@ -52,8 +53,8 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
-                                      response2.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response2.json(), response2.status_code,
+                                 response2.url)
 
         assert response2.status_code == 200, f"Expected 200, got {response2.status_code}"
         assert response2.json()["result"][
@@ -61,7 +62,7 @@ class TestClass:
         assert response2.json()["result"][
                    "errorData"] == {}, f"Expected {{}}, got {response2.json()['result']['errorData']}"
 
-################################################################################################################
+        ################################################################################################################
 
         # check that device info was changed
         response3 = requests.get(
@@ -71,8 +72,7 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response3.json(), response3.status_code,
-                                      response3.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response3.json(), response3.status_code, response3.url)
             print("id: " + str(response3.json().get("id")))
             print("name: " + str(response3.json().get("name")))
             print("model: " + str(response3.json().get("model")))

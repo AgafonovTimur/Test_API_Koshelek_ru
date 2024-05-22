@@ -3,9 +3,9 @@ import os
 import json
 import requests
 from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
 
-
-class TestClass:
+class Test:
     request_body = {
         "name": "nokia",
         "model": "6600",
@@ -24,7 +24,7 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
 
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
         assert response.json()["result"][
@@ -43,7 +43,7 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response2.json(), response2.status_code,
                                       response2.url)
             print(f"name: {response2.json().get("name")}")
             print(f"model: {response2.json().get("model")}")

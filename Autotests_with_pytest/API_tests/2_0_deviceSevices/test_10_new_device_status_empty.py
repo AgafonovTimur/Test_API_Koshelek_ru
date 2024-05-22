@@ -1,10 +1,10 @@
 # new device - device status empty
 import requests
-from test_library import test_params, debug_log_true
 import os
+from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
 
-
-class TestClass2:
+class Test:
     request_body = {
         "name": "ngage",
         "model": "s55",
@@ -21,7 +21,7 @@ class TestClass2:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
 
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
         assert response.json()['result'][

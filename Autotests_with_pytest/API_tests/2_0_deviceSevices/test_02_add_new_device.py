@@ -2,9 +2,10 @@
 import os
 import requests
 from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
 
 
-class TestClass:
+class Test:
     request_body = {
         "name": "siemens mobile",
         "model": "s55",
@@ -24,7 +25,7 @@ class TestClass:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
             print(f"response name: {ar_name} is correct. All good")
 
         assert response.status_code == 200, f"Expected 200, got {response.status_code}"
