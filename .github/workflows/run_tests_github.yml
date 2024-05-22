@@ -11,7 +11,7 @@ permissions:
 # windows-latest
 jobs:
   autotests:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python
@@ -34,7 +34,7 @@ jobs:
           retention-days: 1
 
   generate_allure_report:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: autotests
     name: generate allure report
     steps:
@@ -46,7 +46,7 @@ jobs:
       - name: Allure Report action from marketplace
         uses: agafonovtimur/allure-report-action@main
 
-#      - run: install allure
+      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
       - name : Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - run: allure generate -c allure_results _site #_site - дефолтная папка для отчетов allure
@@ -58,7 +58,7 @@ jobs:
           retention-days: 1
 
   publish_allure_report:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: generate_allure_report
     name: allure report is ready
     steps:
