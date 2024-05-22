@@ -10,6 +10,7 @@ run_test:
     paths:
       - allure_report
   before_script:
+    # - 'curl --location --output artifacts.zip "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/artifacts/main/download?job=pages&job_token=$CI_JOB_TOKEN"'
     - 'curl --location --output artifacts.zip --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/artifacts/main/download?job=pages"'
     - unzip artifacts.zip
     - chmod -R 777 public
