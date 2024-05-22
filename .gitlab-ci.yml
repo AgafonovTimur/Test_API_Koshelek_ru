@@ -3,11 +3,21 @@ stages:
 run_test:
   stage: test
   image: python
+  artifacts:
+    when: always
+    expire_in: 2 days
+    paths:
+      - allure_results
   before_script:
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     - apt-get update && apt-get install -y google-chrome-stable
+    - apt update && apt install -y openjdk-17-jdk openjdk-17-jre
+    - wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz && tar -zxvf allure-2.29.0.tgz -C /opt/ && ln -s /opt/allure-2.29.0/bin/allure /usr/bin/allure
     - pip install -r requirements.txt
 
   script:
-    - python -m pytest
+    - python -m pytest --alluredir=allure_results
+
+  after_script:
+    - allure generate -c allure_results -o allure_reports
