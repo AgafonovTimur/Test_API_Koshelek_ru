@@ -38,7 +38,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - run: scoop install allure
+      - run: install allure
       - name : Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - run: allure generate -c allure_results _site #_site - дефолтная папка для отчетов allure
