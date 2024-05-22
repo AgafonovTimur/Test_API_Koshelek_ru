@@ -38,8 +38,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Allure Report action from marketplace
-        uses: me/allure-report-action@master # simple-elf/allure-report-action@master
+#      - name: Allure Report action from marketplace
+#        uses: me/allure-report-action@master # simple-elf/allure-report-action@master
 
 #      - run: install allure
       - name : Download all workflow run artifacts
