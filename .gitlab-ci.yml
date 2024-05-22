@@ -23,14 +23,15 @@ run_test:
   after_script:
     - allure generate -c allure_results -o allure_report
 
-  pages:
-    stage: report
-    needs: run_test
-    script:
-      - mkdir public
-      - cp -r allure_report/* public
-    artifacts:
-      when: on_success
-      expire_in: never
-      paths:
-        - public
+pages:
+  stage: report
+  needs:
+    - run_test
+  script:
+    - mkdir public
+    - cp -r allure_report/* public
+  artifacts:
+    when: on_success
+    expire_in: never
+    paths:
+      - public
