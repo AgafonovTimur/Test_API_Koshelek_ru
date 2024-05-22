@@ -10,6 +10,11 @@ run_test:
     paths:
       - allure_report
   before_script:
+    - 'curl --location --output artifacts.zip --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/artifacts/main/download?job=pages"'
+    - unzip artifacts.zip
+    - chmod -R 777 public
+    - mkdir allure-results && cp -r public/history allure-results
+
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     - apt-get update && apt-get install -y google-chrome-stable
