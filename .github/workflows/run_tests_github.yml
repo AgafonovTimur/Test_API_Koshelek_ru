@@ -36,8 +36,8 @@ generate_allure_report:
       - name: generate allure report
         uses: actions/setup-java@v3
         with:
-          distribution 'microsoft'
-          java-version: '17'
+          distribution 'temurin'
+          java-version: '21'
         run: scoop install allure
         name : Download all workflow run artifacts
         uses: actions/download-artifact@v3
