@@ -1,0 +1,9 @@
+run test
+python -m pytest
+
+
+
+
+run allure report
+$ pytest --alluredir=allure_results ./test   # и нажать tab
+$ allure serve %allure_result_folder%

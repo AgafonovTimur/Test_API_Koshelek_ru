@@ -1,22 +1,13 @@
 name : Run autotests
 
 on :
-    push #:
-#        branches:
-#            - main
-#    pull_request:
-#        branches:
-#            - main
-#    schedule:
-#        - cron: '0 0 * * *'
-
+    push
 
 # windows-latest
 jobs:
-  test:
+  autotests:
     runs-on: windows-latest
     steps:
-#      - name: Checkout repository
       - uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,10 +20,52 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run tests
-        run: python -m pytest
+        run: python -m pytest --alluredir=allure_results
+        name : save test results for allure
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure_results
+          retention-days: 1
 
+generate_allure_report:
+    runs-on: windows-latest
+    needs: autotests
+    name: generate allure report
+    steps:
+      - name: generate allure report
+        uses: actions/setup-java@v3
+        with:
+          distribution 'microsoft'
+          java-version: '17'
+        run: scoop install allure
+        name : Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+        run: allure generate -c allure_results _site #_site - дефолтная папка для отчетов allure
+        name : Save generated allure report
+        uses: actions/upload-artifact@v3
+        with:
+          name: _site
+          path: _site
+          retention-days: 1
 
-# ubuntu-latest
-#jobs:
-#  test:
-#    runs-on: ubuntu-latest
+publish_allure_report:
+    runs-on: windows-latest
+    needs: generate_allure_report
+    name: allure report is ready
+    steps:
+      - name:  allure report is ready
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure_report
+        steps:
+          name: Download all workflow run artifacts
+          uses: actions/download-artifact@v3
+          name: Upload Pages artifact
+          uses: actions/upload-pages-artifact@v2
+          name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v1
+
+#scoop install allure 2.29.0
