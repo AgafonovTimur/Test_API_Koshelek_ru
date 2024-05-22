@@ -4,6 +4,8 @@ import json
 import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
+from test_library.assertions import Assertions
+
 
 class Test:
     request_body = {
@@ -24,15 +26,13 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
 
-        assert response.status_code == 200, f"Expected 200, got {response.status_code}"
-        assert response.json()["result"][
-                   "success"] == True, f"Expected True, got {response.json()['result']['success']}"
-        assert response.json()["result"][
-                   "errorData"] == {}, f"Expected {{}}, got {response.json()['result']['errorData']}"
+        Assertions.status_code_check(response.status_code, 200)
+        Assertions.json_result_success(response.json()["result"]["success"], True)
+        Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
 
-##########################################################################################################
+        ##########################################################################################################
 
         #  get requsites
         response2 = requests.get(
@@ -43,15 +43,10 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(self, os.path.basename(__file__), response2.json(), response2.status_code,
-                                      response2.url)
-            print(f"name: {response2.json().get("name")}")
-            print(f"model: {response2.json().get("model")}")
-            print(f"device_id: {response2.json().get("id")}")
+            DebugLogs.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
+                                 response2.url)
 
-        assert response2.status_code == 200, f"Expected 200, got {response2.status_code}"
-        assert response2.json()["result"][
-                   "success"] == True, f"Expected True, got {response2.json()['result']['success']}"
-        assert response2.json()["result"][
-                   "errorData"] == {}, f"Expected {{}}, got {response2.json()['result']['errorData']}"
+        Assertions.status_code_check(response2.status_code, 200)
+        Assertions.json_result_success(response2.json()["result"]["success"], True)
+        Assertions.json_result_errorData(response2.json()["result"]["errorData"], {})
         assert device_id == device_id2, f"Expected {device_id}, got {device_id2}"

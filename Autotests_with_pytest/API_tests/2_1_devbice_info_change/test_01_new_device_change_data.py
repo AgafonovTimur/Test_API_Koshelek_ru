@@ -4,6 +4,7 @@ import json
 import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
+from test_library.assertions import Assertions
 
 
 class Test:
@@ -32,16 +33,12 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(self, os.path.basename(__file__), response.json(), response.status_code, response.url)
-            print("name: " + str(response.json().get("name")))
-            print(f"device_id: {device_id}")
+            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
 
-        assert response.status_code == 200, f"Expected 200, got {response.status_code}"
-        assert response.json()["result"][
-                   "success"] == True, f"Expected True, got {response.json()['result']['success']}"
-        assert response.json()["result"][
-                   "errorData"] == {}, f"Expected {{}}, got {response.json()['result']['errorData']}"
-        assert device_id != 0 or device_id is not None, f"Expected not 0 or None, got {device_id}"
+        Assertions.status_code_check(response.status_code, 200)
+        Assertions.json_result_success(response.json()["result"]["success"], True)
+        Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
+        Assertions.json_result_device_id(device_id)
         assert response.json()["name"] == "motorolla", f"Expected motorolla, got {response.json()['name']}"
 
         #################################################################################################################
@@ -53,14 +50,12 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(self, os.path.basename(__file__), response2.json(), response2.status_code,
+            DebugLogs.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
                                  response2.url)
 
-        assert response2.status_code == 200, f"Expected 200, got {response2.status_code}"
-        assert response2.json()["result"][
-                   "success"] == True, f"Expected True, got {response2.json()['result']['success']}"
-        assert response2.json()["result"][
-                   "errorData"] == {}, f"Expected {{}}, got {response2.json()['result']['errorData']}"
+        Assertions.status_code_check(response2.status_code, 200)
+        Assertions.json_result_success(response2.json()["result"]["success"], True)
+        Assertions.json_result_errorData(response2.json()["result"]["errorData"], {})
 
         ################################################################################################################
 
@@ -72,16 +67,11 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(self, os.path.basename(__file__), response3.json(), response3.status_code, response3.url)
-            print("id: " + str(response3.json().get("id")))
-            print("name: " + str(response3.json().get("name")))
-            print("model: " + str(response3.json().get("model")))
+            DebugLogs.debug_logs(os.path.basename(__file__), response3.json(), response3.status_code, response3.url)
 
-        assert response3.status_code == 200, f"Expected 200, got {response3.status_code}"
-        assert response3.json()["result"][
-                   "success"] == True, f"Expected True, got {response3.json()['result']['success']}"
-        assert response3.json()["result"][
-                   "errorData"] == {}, f"Expected {{}}, got {response3.json()['result']['errorData']}"
-        assert device_id == device_id3, f"Expected {device_id}, got {device_id3}"
+        Assertions.status_code_check(response3.status_code, 200)
+        Assertions.json_result_success(response3.json()["result"]["success"], True)
+        Assertions.json_result_errorData(response3.json()["result"]["errorData"], {})
+        assert device_id == device_id3, f"Expected {device_id3}, got {device_id3}"
         assert response3.json()["name"] == "sony", f"Expected sony, got {response3.json()['name']}"
         assert response3.json()["model"] == "m2", f"Expected m2, got {response3.json()['model']}"

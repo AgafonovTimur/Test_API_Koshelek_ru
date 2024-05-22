@@ -4,7 +4,8 @@ import json
 debug_true = True
 
 class DebugLogs():
-    def debug_logs(self, *args):
+    @staticmethod
+    def debug_logs(*args):
         file_name, response_json, status_code, url = args
 
         print("\033[92m" + "\n" + file_name + "\n" + "\033[93m"
