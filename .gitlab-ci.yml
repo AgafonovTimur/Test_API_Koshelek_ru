@@ -7,7 +7,7 @@ run_test:
     when: always
     expire_in: 2 days
     paths:
-      - allure_results
+      - allure_report
   before_script:
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -20,4 +20,6 @@ run_test:
     - python -m pytest --alluredir=allure_results
 
   after_script:
-    - allure generate -c allure_results -o allure_reports
+    - allure generate -c allure_results -o allure_report
+
+  pages:
