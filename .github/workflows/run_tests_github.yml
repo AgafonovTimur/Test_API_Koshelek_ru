@@ -47,7 +47,7 @@ jobs:
       - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.23.1/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1/bin/allure /usr/bin/allure
       - name : Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: allure generate -c allure_results -o_site #_site - дефолтная папка для отчетов allure
+      - run: allure generate -c allure_results -o _site #_site - дефолтная папка для отчетов allure
       - name : Save generated allure report
         uses: actions/upload-artifact@v3
         with:
@@ -68,4 +68,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1.2.9
+
 

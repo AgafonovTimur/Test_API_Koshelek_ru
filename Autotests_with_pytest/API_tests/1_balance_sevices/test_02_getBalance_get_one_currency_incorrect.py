@@ -1,18 +1,17 @@
 # check can get balance
 import os
-import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
-
+from test_library.test_params import BaseUrlRequests as BUR
 
 class Test:
-    def test_correct_auth(self):
-        currency_rub = "currency=RUBB"
+    def test_currency_incorrect(self):
+        url2 = "/v1/balances"
+        url_currency = "currency=RUBB"
 
-        response = requests.get(
-            f"{test_params.baseUrl}/v1/balances?{currency_rub}&signature={test_params.clientSecret}",
-            headers=test_params.request_headers)
+        response = BUR.url_get(self, url2, None, url_currency,
+                               None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

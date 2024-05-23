@@ -1,17 +1,19 @@
 # check if authorization is correct
 import os
-import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
+from test_library.test_params import BaseUrlRequests as BUR
 
 
 class Test:
-    def test_correct_auth(self):  # sourcery skip: extract-method
-        response = requests.get(
-            f"{test_params.baseUrl}/v1/devices?signature=18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49",
-            # +1 at the end
-            headers=test_params.request_headers)
+    def test_wrong_secret(self):  # sourcery skip: extract-method
+        url_2 = "/v1/devices"
+        url_clientSecret = "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"
+        print(url_clientSecret + "ekjwe")
+
+        response = BUR.url_get(self, url_2, None, None,
+                               url_clientSecret, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
