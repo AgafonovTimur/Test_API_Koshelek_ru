@@ -13,18 +13,16 @@ import pytest
 @allure.description("проверка авторизации с некорректным данными")
 class Test:
     @pytest.mark.parametrize(
-        'url_clientSecret',
+        "url_clientSecret",
         [
-            pytest.param(("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"),
-                         id="18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"),
-            pytest.param(("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d47"),
-                         id="18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d47"),
+            ("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"),
+            ("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d47"),
             ("A8c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff93d2f1520d4222229"),
             ("23c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff93d2f1520d42222"),
             ("!!@#$%^fwefwefweff^&*^&*^(*&^*&^*&^#6481764964#$*!&^$*^!$"),
             ("gjerkjgjerjgjerojgапоукщшопщшукопозщукопшщоукщпощшуокШО№ЩШОШ№О;ШЩООШО;ОЩ№;О"),
             ("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&@@@&&&&&&&&&&&"),
-            pytest.param("", id="")
+            ("")
         ]
     )
     def test_wrong_secret(self, url_clientSecret):
