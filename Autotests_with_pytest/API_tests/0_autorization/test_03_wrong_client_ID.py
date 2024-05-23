@@ -1,19 +1,25 @@
 # check if client ID is correct
 import os
-import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
+from test_library.test_params import BaseUrlRequests as BUR
 
 
 class Test:
-    def test_correct_auth(self):
+    def test_wrong_id(self):
+        url_2 = "/v1/devices"
+
         request_headers = {'Content-Type': 'application/json',
                            'ClientId': "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"}
 
-        response = requests.get(
-            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-            headers=request_headers)
+        response = BUR.url_get(self, url_2, None, None, None, request_headers, None)
+
+        
+
+        # response = requests.get(
+        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+        #     headers=request_headers)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

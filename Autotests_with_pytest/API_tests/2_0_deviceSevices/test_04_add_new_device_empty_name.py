@@ -4,7 +4,7 @@ import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
-
+from test_library.test_params import BaseUrlRequests as BUR
 
 class Test:
     request_body = {
@@ -12,11 +12,13 @@ class Test:
     }
 
     def test_add_new_device(self):
-        request_payload = self.request_body
+        url_2 = "/v1/devices"
 
-        response = requests.post(
-            f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-            headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
+
+        # response = requests.post(
+        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
+        #     headers=test_params.request_headers, json=request_payload)
 
         actual_result_name = response.json().get("name")  # actual response name
         expected_result_name = "siemens mobile"  # expected response name

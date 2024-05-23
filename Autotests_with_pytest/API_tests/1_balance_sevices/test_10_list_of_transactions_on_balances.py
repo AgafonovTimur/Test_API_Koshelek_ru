@@ -1,16 +1,19 @@
 # check list of transactions on balances
 import os
-import requests
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
-
+from test_library.test_params import BaseUrlRequests as BUR
 
 class Test:
     def test_correct_auth(self):
-        response = requests.get(
-            f"{test_params.baseUrl}/v1/balances/changes?{test_params.currency}&signature={test_params.clientSecret}",
-            headers=test_params.request_headers)
+        url_2 = "/v1/balances/changes"
+
+        response = BUR.url_get(self, url_2, None, None, None,None,None)
+
+        # response = requests.get(
+        #     f"{test_params.baseUrl}/v1/balances/changes?{test_params.currency}&signature={test_params.clientSecret}",
+        #     headers=test_params.request_headers)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
