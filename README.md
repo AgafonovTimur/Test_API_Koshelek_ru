@@ -11,5 +11,3 @@ in debug : yellow - response json, green : debug info from prints
 asserts in assertion.py class Assertions
 
 python -s pytest --alluredir=allure_report .\Autotests_with_pytest\
-
-123
