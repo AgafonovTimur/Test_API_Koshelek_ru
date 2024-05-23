@@ -38,8 +38,7 @@ class Test:
 
         #  get requsites
         url_2 = "/v1/devices/"
-        response2 = BUR.url_get(self, url_2, device_id, None,
-                                None, None, self.request_body)
+        response2 = BUR.url_get(self, url_2, url_3=device_id, request_body=self.request_body)
 
         device_id2 = json.dumps(response2.json().get("id"))
 

@@ -6,7 +6,7 @@ from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 import allure
 
-
+# add no client ID
 @allure.feature("проверка авторизации")
 @allure.description("проверка авторизации с некорректными данными")
 class Test:
