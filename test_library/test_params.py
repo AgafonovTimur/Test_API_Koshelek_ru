@@ -1,5 +1,6 @@
 # global variables
 import requests
+import allure
 
 
 clientId = "ID-6892fc719fbc467bae2564f37fdb64f728070be92e744a18b7ede4842ad4181f"
@@ -35,7 +36,8 @@ class BaseUrlRequests:
 
         response = requests.get(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        return response
+        with allure.step(f"GET response: {response}"):
+            return response
 
     def url_post(self, url_2, url_3, url_currency, url_clientSecret, request_headers, request_body):
 
@@ -54,7 +56,8 @@ class BaseUrlRequests:
 
         response = requests.post(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        return response
+        with allure.step(f"POST response: {response}"):
+            return response
 
     def url_put(self, url_2, url_3, url_currency, url_clientSecret, request_headers, request_body):
 
@@ -73,7 +76,8 @@ class BaseUrlRequests:
 
         response = requests.put(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        return response
+        with allure.step(f"PUT response: {response}"):
+            return response
 
     def url_delete(self, url_2, url_3, url_currency, url_clientSecret, request_headers, request_body):
 
@@ -92,4 +96,5 @@ class BaseUrlRequests:
 
         response = requests.delete(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        return response
+        with allure.step(f"DELETE response: {response}"):
+            return response
