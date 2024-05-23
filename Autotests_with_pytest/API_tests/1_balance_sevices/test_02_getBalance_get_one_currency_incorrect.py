@@ -14,8 +14,7 @@ class Test:
         url2 = "/v1/balances"
         url_currency = "currency=RUBB"
 
-        response = BUR.url_get(self, url2, None, url_currency,
-                               None, None, None)
+        response = BUR.url_get(self, url2, url_currency=url_currency)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

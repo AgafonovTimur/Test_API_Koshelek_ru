@@ -14,8 +14,7 @@ class Test:
     def test_correct_auth(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_get(self, url_2, None, None,
-                               None, None, None)
+        response = BUR.url_get(self, url_2=url_2)
 
         if debug_log_true.debug_true == True:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(),

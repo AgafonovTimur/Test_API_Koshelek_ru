@@ -20,8 +20,7 @@ class Test:
     def test_add_new_device_empty_type(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None,
-                                None, None, self.request_body)
+        response = BUR.url_post(self, url_2, request_body=self.request_body)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

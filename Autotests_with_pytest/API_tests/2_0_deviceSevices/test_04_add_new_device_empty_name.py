@@ -18,8 +18,7 @@ class Test:
     def test_add_new_device_empty_name(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None,
-                                None, None, self.request_body)
+        response = BUR.url_post(self, url_2, request_body = self.request_body)
 
         actual_result_name = response.json().get("name")  # actual response name
         expected_result_name = "siemens mobile"  # expected response name

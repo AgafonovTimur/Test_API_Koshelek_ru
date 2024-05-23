@@ -28,8 +28,7 @@ class Test:
     def test_add_change_data(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None,
-                                None, None, self.request_body)
+        response = BUR.url_post(self, url_2, request_body=self.request_body)
 
         device_id = json.dumps(response.json().get("id"))
 
@@ -47,8 +46,7 @@ class Test:
 
         # change device info
         url_2 = "/v1/devices/"  # /v1/devices/
-        response2 = BUR.url_put(self, url_2, device_id, None,
-                                None, None, self.request_body2)
+        response2 = BUR.url_put(self, url_2, url_3=device_id, request_body=self.request_body2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -63,8 +61,7 @@ class Test:
 
         # check that device info was changed
         # url_2 = "/v1/devices/"  # /v1/devices/
-        response3 = BUR.url_get(self, url_2, device_id, None,
-                                None, None, self.request_body2)
+        response3 = BUR.url_get(self, url_2, url_3=device_id, request_body=self.request_body2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

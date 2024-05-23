@@ -15,8 +15,7 @@ class Test:
         url_clientSecret = "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"
         print(url_clientSecret + "ekjwe")
 
-        response = BUR.url_get(self, url_2, None, None,
-                               url_clientSecret, None, None)
+        response = BUR.url_get(self, url_2=url_2, url_clientSecret=url_clientSecret)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

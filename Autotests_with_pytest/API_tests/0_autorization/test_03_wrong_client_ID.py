@@ -16,8 +16,7 @@ class Test:
         request_headers = {'Content-Type': 'application/json',
                            'ClientId': "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"}
 
-        response = BUR.url_get(self, url_2, None, None,
-                               None, request_headers, None)
+        response = BUR.url_get(self, url_2, request_headers=request_headers)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

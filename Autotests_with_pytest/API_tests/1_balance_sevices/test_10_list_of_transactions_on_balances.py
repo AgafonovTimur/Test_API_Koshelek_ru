@@ -8,13 +8,12 @@ import allure
 
 
 @allure.feature("проверка баланса")
-@allure.description("лист транзакции")
+@allure.description("лист транзакций")
 class Test:
     def test_list_of_transactions(self):
         url_2 = "/v1/balances/changes"
 
-        response = BUR.url_get(self, url_2, None, None,
-                               None, None, None)
+        response = BUR.url_get(self, url_2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

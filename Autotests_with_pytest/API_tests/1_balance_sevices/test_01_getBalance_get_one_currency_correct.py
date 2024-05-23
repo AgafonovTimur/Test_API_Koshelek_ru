@@ -13,8 +13,7 @@ class Test:
     def test_currency_correct(self):
         url_2 = "/v1/balances"
 
-        response = BUR.url_get(self, url_2, None, None,
-                               None, None, None)
+        response = BUR.url_get(self, url_2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
