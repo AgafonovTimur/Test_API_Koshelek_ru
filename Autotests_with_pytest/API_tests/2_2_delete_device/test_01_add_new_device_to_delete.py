@@ -16,14 +16,11 @@ class Test:
         "status": "DEVICE_STATUS_ACTIVE"
     }
 
-    def test_add_new_device(self):
+    def test_add_new_device_to_delete(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         device_id = json.dumps(response.json().get("id"))
 
@@ -42,11 +39,8 @@ class Test:
         #  delete device
         url_2 = "/v1/devices/"
 
-        response2 = BUR.url_delete(self, url_2, device_id, None, None, None, None)
-
-        # response2 = requests.delete(
-        #     f"{test_params.baseUrl}/v1/devices/{device_id}?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers)
+        response2 = BUR.url_delete(self, url_2, device_id, None,
+                                   None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -61,11 +55,8 @@ class Test:
 
         # check that device is not found
 
-        response3 = BUR.url_get(self, url_2, device_id, None, None, None, None)
-
-        # response3 = requests.get(
-        #     f"{test_params.baseUrl}/v1/devices/{device_id}?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers)
+        response3 = BUR.url_get(self, url_2, device_id, None,
+                                None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

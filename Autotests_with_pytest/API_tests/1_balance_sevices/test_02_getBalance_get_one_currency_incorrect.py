@@ -10,11 +10,8 @@ class Test:
         url2 = "/v1/balances"
         url_currency = "currency=RUBB"
 
-        response = BUR.url_get(self, url2, url_currency, None, None, None, None)
-
-        # response = requests.get(
-        #     f"{test_params.baseUrl}/v1/balances?{currency_rub}&signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers)
+        response = BUR.url_get(self, url2, None, url_currency,
+                               None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

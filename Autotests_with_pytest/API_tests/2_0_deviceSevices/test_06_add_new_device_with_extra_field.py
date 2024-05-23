@@ -7,6 +7,7 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
     request_body = {
         "name": "ngage",
@@ -16,21 +17,17 @@ class Test:
         "my_id": "device-id"  # my_id does not exist
     }
 
-    def test_add_new_device(self):
+    def test_add_new_device_with_extra_field(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         device_id = json.dumps(response.json().get("id"))
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
-            # print(f"device_id: {device_id}")
 
         # response status code must be 4xx and it's a bug, but test made to pass this assert
         # assertion must be != 200 or == 400 bad request

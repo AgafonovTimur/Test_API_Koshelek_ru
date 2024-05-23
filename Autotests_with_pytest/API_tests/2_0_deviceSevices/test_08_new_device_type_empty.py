@@ -5,6 +5,7 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
     request_body = {
         "name": "ngage",
@@ -13,16 +14,11 @@ class Test:
         "status": "DEVICE_STATUS_ACTIVE",
     }
 
-    def test_add_new_device(self):
+    def test_add_new_device_empty_type(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # request_payload = self.request_body
-        #
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -32,4 +28,3 @@ class Test:
         Assertions.json_result_success(response.json()['result']['success'], False)
         Assertions.json_result_error(response.json()['result']['error'], "RequestNotValid")
         Assertions.json_result_errorCode(response.json()['result']['ErrorCode'], 900)
-

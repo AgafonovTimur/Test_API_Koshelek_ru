@@ -7,6 +7,7 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
     request_body = {
         "name": "motorolla",
@@ -21,17 +22,11 @@ class Test:
         "type": "TYPE_UNKNOWN"
     }
 
-    def test_add_new_device(self):
+    def test_add_change_data(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # request_payload = self.request_body
-        # request_payload2 = self.request_body2
-
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         device_id = json.dumps(response.json().get("id"))
 
@@ -49,11 +44,8 @@ class Test:
 
         # change device info
         url_2 = "/v1/devices/"  # /v1/devices/
-        response2 = BUR.url_put(self, url_2, device_id, None, None, None, self.request_body2)
-
-        # response2 = requests.put(
-        #     f"{test_params.url_base}{url_2}{device_id}?signature=18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d48",
-        #     headers={'Content-Type': 'application/json', 'ClientId': test_params.clientId}, json=self.request_body2)
+        response2 = BUR.url_put(self, url_2, device_id, None,
+                                None, None, self.request_body2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -68,14 +60,8 @@ class Test:
 
         # check that device info was changed
         # url_2 = "/v1/devices/"  # /v1/devices/
-        response3 = BUR.url_get(self, url_2, device_id, None, None, None, self.request_body2)
-
-        # response3 = requests.get(
-        #     f"{test_params.url_base}/v1/devices/{device_id}?signature=18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d48",
-        #     headers={'Content-Type': 'application/json', 'ClientId': test_params.clientId}, json=self.request_body2)
-        # # response3 = requests.get(
-        #     f"https://p2psys-publicoffice.konomik.com/v1/devices/{device_id}?signature=signature=18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d48"
-        # )
+        response3 = BUR.url_get(self, url_2, device_id, None,
+                                None, None, self.request_body2)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

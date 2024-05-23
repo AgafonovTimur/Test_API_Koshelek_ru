@@ -7,6 +7,7 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
     request_body = {
         "name": "nokia",
@@ -15,16 +16,11 @@ class Test:
         "status": "DEVICE_STATUS_ACTIVE"
     }
 
-    def test_add_new_device(self):
+    def test_add_new_device_for_requsites(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # request_payload = self.request_body
-        #
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         device_id = json.dumps(response.json().get("id"))
 
@@ -40,11 +36,8 @@ class Test:
 
         #  get requsites
         url_2 = "/v1/devices/"
-        response2 = BUR.url_get(self, url_2, device_id, None, None, None, self.request_body)
-
-        # response2 = requests.get(
-        #     f"{test_params.baseUrl}/v1/devices/{device_id}?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response2 = BUR.url_get(self, url_2, device_id, None,
+                                None, None, self.request_body)
 
         device_id2 = json.dumps(response2.json().get("id"))
 

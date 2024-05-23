@@ -17,12 +17,8 @@ class Test:
     def test_add_new_device(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # response = requests.post(
-        #     f"{test_params.url_base}/v1/devices?signature={test_params.url_clientSecret}",
-        #     headers=test_params.request_headers, json=self.request_body)
-        # print(response.text + "398480758943")
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"

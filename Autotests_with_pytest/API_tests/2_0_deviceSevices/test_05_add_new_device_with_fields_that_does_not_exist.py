@@ -15,14 +15,11 @@ class Test:
         "status": "DEVICE_STATUS_ACTIVE"
     }
 
-    def test_add_new_device(self):
+    def test_add_new_device_with_fields_that_does_not_exist(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, None, None, None, None, self.request_body)
-
-        # response = requests.post(
-        #     f"{test_params.baseUrl}/v1/devices?signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers, json=request_payload)
+        response = BUR.url_post(self, url_2, None, None,
+                                None, None, self.request_body)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

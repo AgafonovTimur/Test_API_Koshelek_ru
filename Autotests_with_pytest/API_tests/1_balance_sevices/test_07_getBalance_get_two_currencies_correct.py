@@ -5,16 +5,14 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
-    def test_correct_auth(self):
+    def test_currency_correct(self):
         url_2 = "/v1/balances"
-        currency_usd = "currency=USD"
+        url_currency = "currency=USD"
 
-        response = BUR.url_get(self, url_2, currency_usd, None, None,None,None)
-
-        # response = requests.get(
-        #     f"{test_params.baseUrl}/v1/balances?{test_params.currency}&{currency_usd}&signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers)
+        response = BUR.url_get(self, url_2, None, url_currency,
+                               None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -23,4 +21,3 @@ class Test:
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], True)
         Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
-

@@ -6,15 +6,13 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 class Test:
-    def test_correct_auth(self):  # sourcery skip: extract-method
+    def test_list_of_operations(self):  # sourcery skip: extract-method
         url_2 = "/v1/balances/operations"
 
-        response = BUR.url_get(self, url_2, None, None, None,None, None)
-
-        # response = requests.get(
-        #     f"{test_params.baseUrl}/v1/balances/operations?{test_params.currency}&type=2&signature={test_params.clientSecret}",
-        #     headers=test_params.request_headers)
+        response = BUR.url_get(self, url_2, None, None,
+                               None, None, None)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
@@ -25,4 +23,3 @@ class Test:
         Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
         Assertions.json_result_items(response.json()["items"], [])
         Assertions.json_result_total_isinstance(response.json()["total"], int)
-
