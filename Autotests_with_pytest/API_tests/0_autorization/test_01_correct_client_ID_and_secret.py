@@ -3,6 +3,7 @@
 check if authorization is correct 1
 """
 import os
+import allure
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
