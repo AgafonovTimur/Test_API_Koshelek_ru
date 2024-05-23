@@ -5,8 +5,11 @@ from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
+import allure
 
 
+@allure.feature("Устройства")
+@allure.description(" новое устройство с отсутствующими полями")
 class Test:
     request_body = {
         "name": "siemens",

@@ -6,8 +6,9 @@ from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 import allure
 
+
 @allure.feature("проверка авторизации")
-@allure.title("проверка авторизации с некорректным данными")
+@allure.description("проверка авторизации с некорректным данными")
 class Test:
     def test_wrong_secret(self):  # sourcery skip: extract-method
         url_2 = "/v1/devices"

@@ -7,8 +7,9 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
+
 @allure.feature("проверка авторизации ")
-@allure.title("проверка авторизации с корректными данными")
+@allure.description("проверка авторизации с корректными данными")
 class Test:
     def test_correct_auth(self):
         url_2 = "/v1/devices"

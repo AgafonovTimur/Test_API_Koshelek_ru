@@ -4,7 +4,11 @@ from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
+import allure
 
+
+@allure.feature("проверка баланса")
+@allure.description("проверка что баланс отображается некорректно")
 class Test:
     def test_currency_incorrect(self):
         url2 = "/v1/balances"
