@@ -7,10 +7,10 @@ from test_library.test_params import BaseUrlRequests as BUR
 import allure
 import pytest
 
+
 # rUb Rub RUB rub
 @allure.feature("проверка баланса")
 @allure.description("проверка что баланс отображается корректно")
-
 class Test:
     @staticmethod
     def currency_dict_correct_params():
@@ -22,12 +22,10 @@ class Test:
             for u in u_dict:
                 for b in b_dict:
                     currency_dict.append(r + u + b)
-        print(currency_dict)
         return currency_dict
 
     @pytest.mark.parametrize("url_currency_correct_params", currency_dict_correct_params())
-    def test_currency_correct(self,url_currency_correct_params):
-        # url_currency_correct_params = url_currency_correct_params
+    def test_currency_correct(self, url_currency_correct_params):
         url_2 = "/v1/balances"
 
         response = BUR.url_get(self, url_2, url_currency=url_currency_correct_params)

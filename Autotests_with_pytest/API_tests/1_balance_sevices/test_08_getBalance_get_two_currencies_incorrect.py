@@ -12,7 +12,7 @@ import allure
 class Test:
     def test_currency_incorrect(self):
         url_2 = "/v1/balances"
-        url_currency = "currency=few"
+        url_currency = "currency=few&currency=two"
 
         response = BUR.url_get(self, url_2, url_currency=url_currency)
 
