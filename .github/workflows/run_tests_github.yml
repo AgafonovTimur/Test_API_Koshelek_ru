@@ -91,7 +91,7 @@ on:
       deployment_target:
         description: Choose target
         required: true
-        default: second_test
+        default: all
         type: choice
         options:
           - first_test
@@ -105,8 +105,7 @@ permissions:
 
 jobs:
   download-history:
-    if: always()
-    # if: false
+    continue-on-error: true
     runs-on: ubuntu-latest
     name: Download history
     steps:
