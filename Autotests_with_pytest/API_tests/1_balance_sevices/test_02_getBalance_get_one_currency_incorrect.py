@@ -5,16 +5,31 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 import allure
+import pytest
 
 
 @allure.feature("проверка баланса")
 @allure.description("проверка что баланс отображается некорректно")
 class Test:
-    def test_currency_incorrect(self):
+    @pytest.mark.parametrize(
+        "url_currency_incorrect_params",
+        [
+            ("currency=RRUB"),
+            ("currency=RrUB"),
+            ("currency=RRuB"),
+            ("currency=RRUb"),
+            ("currency=RuUB"),
+            ("currency=RUuB"),
+            ("currency=RUBB"),
+            ("currency=Rubb"),
+            ("currency=RuBb"),
+            ("currency=rubb"),
+        ]
+    )
+    def test_currency_incorrect(self, url_currency_incorrect_params):
         url2 = "/v1/balances"
-        url_currency = "currency=RUBB"
 
-        response = BUR.url_get(self, url2, url_currency=url_currency)
+        response = BUR.url_get(self, url2, url_currency=url_currency_incorrect_params)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

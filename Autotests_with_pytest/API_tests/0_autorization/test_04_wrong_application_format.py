@@ -13,7 +13,7 @@ import pytest
 class Test:
 
     @pytest.mark.parametrize(
-        "request_headers",
+        "request_headers_params",
         [
             {
                 "Content-Type": "application/xml",
@@ -49,10 +49,10 @@ class Test:
             },
         ],
     )
-    def test_wrong_id(self, request_headers):
+    def test_wrong_id(self, request_headers_params):
         url_2 = "/v1/devices"
 
-        response = BUR.url_get(self, url_2, request_headers=request_headers)
+        response = BUR.url_get(self, url_2, request_headers=request_headers_params)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:

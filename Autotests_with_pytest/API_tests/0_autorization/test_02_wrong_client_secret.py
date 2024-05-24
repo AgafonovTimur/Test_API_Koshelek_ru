@@ -13,7 +13,7 @@ import pytest
 @allure.description("проверка авторизации с некорректным данными")
 class Test:
     @pytest.mark.parametrize(
-        "url_clientSecret",
+        "url_clientSecret_params",
         [
             ("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d49"),
             ("18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f1520d47"),
@@ -25,10 +25,10 @@ class Test:
             ("")
         ]
     )
-    def test_wrong_secret(self, url_clientSecret):
+    def test_wrong_secret(self, url_clientSecret_params):
         url_2 = "/v1/devices"
 
-        response = BUR.url_get(self, url_2=url_2, url_clientSecret=url_clientSecret)
+        response = BUR.url_get(self, url_2=url_2, url_clientSecret=url_clientSecret_params)
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
