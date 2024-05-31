@@ -24,5 +24,4 @@ class DebugLogs():
         print("\033[94m")
         print("----------------------------------------Assertions-------------------------------------")
         print("\033[92m")
-#  url_3, url_currency, url_clientSecret, request_headers,
-#  url_3 + url_currency + url_clientSecret + request_headers +
+
