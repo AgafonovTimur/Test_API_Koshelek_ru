@@ -1,9 +1,10 @@
 run test
 python -m pytest
-
+python -m pytest -k "smoke"  - start tests with parameter
 
 
 
 run allure report
 $ pytest --alluredir=allure_results ./test   # и нажать tab
 $ allure serve %allure_result_folder%
+
