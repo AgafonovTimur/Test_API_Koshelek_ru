@@ -28,7 +28,8 @@ class Test:
 
         #  create new device
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
+                                 self.request_body)
 
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], True)
@@ -46,7 +47,7 @@ class Test:
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
             DebugLogs.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
-                                 response2.url)
+                                 response2.url, url_2, device_id)
 
         Assertions.status_code_check(response2.status_code, 200)
         Assertions.json_result_success(response2.json()["result"]["success"], True)
@@ -61,7 +62,7 @@ class Test:
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
             DebugLogs.debug_logs(os.path.basename(__file__), response3.json(), response3.status_code,
-                                 response3.url)
+                                 response3.url, url_2, device_id)
 
         Assertions.status_code_check(response3.status_code, 200)
         Assertions.json_result_success(response3.json()["result"]["success"], False)

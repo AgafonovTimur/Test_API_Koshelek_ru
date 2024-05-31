@@ -25,7 +25,8 @@ class Test:
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
+                                 self.request_body)
 
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()['result']['success'], False)

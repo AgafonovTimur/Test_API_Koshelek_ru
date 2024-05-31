@@ -18,14 +18,15 @@ class Test:
     def test_add_new_device_empty_name(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, request_body = self.request_body)
+        response = BUR.url_post(self, url_2, request_body=self.request_body)
 
         actual_result_name = response.json().get("name")  # actual response name
         expected_result_name = "siemens mobile"  # expected response name
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
-            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
+            DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
+                                 self.request_body)
             print(f"response name: {actual_result_name} is empty and is incorrect. All good")
 
         # assertion must be != 200 or == 400 bad request, but its a bug in API
