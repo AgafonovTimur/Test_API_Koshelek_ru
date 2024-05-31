@@ -2,12 +2,14 @@
 
 import os
 import allure
+import pytest
+
 from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 
-
+@pytest.mark.smoke
 @allure.feature("проверка авторизации ")
 @allure.description("проверка авторизации с корректными данными")
 class Test:

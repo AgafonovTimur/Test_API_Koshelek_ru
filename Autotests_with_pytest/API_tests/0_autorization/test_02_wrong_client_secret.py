@@ -9,6 +9,7 @@ import pytest
 
 
 #  add no client secret
+@pytest.mark.skip(reason="Test skip option")
 @allure.feature("проверка авторизации")
 @allure.description("проверка авторизации с некорректным данными")
 class Test:

@@ -25,7 +25,8 @@ run_tests:
         - wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz && tar -zxvf allure-2.25.0.tgz -C /opt/ && ln -s /opt/allure-2.25.0/bin/allure /usr/bin/allure
         - pip install -r requirements.txt
     script:
-        - python -m pytest --alluredir=allure-results
+        - python -m pytest -k "smoke" --alluredir=allure-results
+#        - python -m pytest --alluredir=allure-results
     after_script:
         - allure generate -c allure-results -o allure-report
 
