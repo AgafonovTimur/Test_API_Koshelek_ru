@@ -31,7 +31,9 @@ class Test:
             pass
         with allure.step(f"тут шаг 3"):
             pass
-        with allure.step(f"тут шаг 4"):
+        with allure.step(
+                "тут шаг 4" + "\n" +
+                "---------------------------------------Проверки-------------------------------------"):
             pass
 
         # debug log displays if debug_true = True
