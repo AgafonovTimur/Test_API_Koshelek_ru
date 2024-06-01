@@ -24,9 +24,13 @@ class Test:
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"
-        with allure.step(
-                f"Перейти на сайт добавив {url_2}{self.request_body} '\n'"
-                f" проверить что {actual_result_name} = {expected_result_name} '\n' тут шаг 3 '\n' тут шаг 4"):
+        with allure.step(f"Перейти на сайт добавив {url_2}{self.request_body}"):
+            pass
+        with allure.step(f"проверить что {actual_result_name} = {expected_result_name}"):
+            pass
+        with allure.step(f"тут шаг 3"):
+            pass
+        with allure.step(f"тут шаг 4"):
             pass
 
         # debug log displays if debug_true = True
@@ -35,7 +39,7 @@ class Test:
                                  self.request_body)
             print(f"response name: {actual_result_name} is correct. All good")
 
-        Assertions.status_code_check(response.status_code, 200)
+        Assertions.status_code_check(response.status_code, 2000)
         Assertions.json_result_success(response.json()["result"]["success"], True)
         Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
         Assertions.json_name_equal_to_expected_result_name(actual_result_name,
