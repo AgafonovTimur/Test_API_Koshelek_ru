@@ -24,7 +24,8 @@ class Test:
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"
-        with allure.step(f"Перейти на сайт добавив {url_2}{self.request_body}"):
+
+        with allure.step(f"Перейти на сайт добавив = '{url_2}' и request_body = {self.request_body}"):
             pass
         with allure.step(f"проверить что {actual_result_name} = {expected_result_name}"):
             pass

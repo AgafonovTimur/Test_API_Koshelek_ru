@@ -10,7 +10,7 @@ class DebugLogs():
         url_base = "https://p2psys-publicoffice.konomik.com"
         print("\033[92m" + "\n" + file_name + "\n" + "\033[94m")
         print("----------------------------------------Request---------------------------------------")
-        print("\033[93m" + "\n" + url_base + url_2)
+        print("\033[93m" + "\n" + url)
         if url_3 is not None: print(url_3)
         if url_currency is not None: print(url_currency)
         if url_clientSecret is not None: print(url_clientSecret)
@@ -19,8 +19,6 @@ class DebugLogs():
         print("\033[94m")
         print("----------------------------------------Response---------------------------------------")
         print("\033[93m" + "\n" + json.dumps(response_json, indent=2))
-        print("\033[92m" + "\n" + f"response status code: {status_code}")
-        print(url)
         print("\033[94m")
         print("----------------------------------------Assertions-------------------------------------")
         print("\033[92m")

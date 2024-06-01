@@ -5,8 +5,9 @@ from test_library.debug_log_true import DebugLogs
 from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 import allure
+import pytest
 
-
+@pytest.mark.skip(reason="Test skip option")
 @allure.feature("Устройства")
 @allure.description("создать новое устройство")
 class Test:
@@ -24,14 +25,7 @@ class Test:
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"
-        with allure.step(f"Перейти на сайт добавив {url_2}{self.request_body}"):
-            pass
-        with allure.step(f"проверить что {actual_result_name} = {expected_result_name}"):
-            pass
-        with allure.step(f"тут шаг 3"):
-            pass
-        with allure.step(f"тут шаг 4"):
-            pass
+
 
         # debug log displays if debug_true = True
         if debug_log_true.debug_true == True:
