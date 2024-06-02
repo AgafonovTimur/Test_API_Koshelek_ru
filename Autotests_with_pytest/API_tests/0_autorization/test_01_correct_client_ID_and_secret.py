@@ -12,7 +12,7 @@ from test_library.test_params import BaseUrlRequests as BUR
 @allure.description("проверка авторизации с корректными данными")
 class Test:
     def test_correct_auth(self):
-        url_2 = "/v1/devices"
+        url_2 = "/v1/balances"
 
         response = BUR.url_get(self, url_2=url_2)
 

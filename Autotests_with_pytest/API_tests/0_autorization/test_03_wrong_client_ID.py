@@ -60,7 +60,7 @@ class Test:
         ],
     )
     def test_wrong_id(self, request_headers1_params):
-        url_2 = "/v1/devices"
+        url_2 = "/v1/balances"
 
         response = BUR.url_get(self, url_2, request_headers=request_headers1_params)
 

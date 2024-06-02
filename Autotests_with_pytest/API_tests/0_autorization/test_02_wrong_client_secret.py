@@ -26,7 +26,7 @@ class Test:
         ]
     )
     def test_wrong_secret(self, url_clientSecret_params):
-        url_2 = "/v1/devices"
+        url_2 = "/v1/balances"
 
         response = BUR.url_get(self, url_2=url_2, url_clientSecret=url_clientSecret_params)
 
