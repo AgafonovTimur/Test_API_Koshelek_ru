@@ -23,4 +23,4 @@ class Test:
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], True)
         Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
-        # Branch_change_test
+
