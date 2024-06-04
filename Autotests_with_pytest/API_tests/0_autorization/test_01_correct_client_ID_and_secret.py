@@ -21,7 +21,7 @@ class Test:
                                  response.status_code, response.url, url_2)
 
         """
-        описание теста
+        описание теста 1
         тут шаг 1 
         тут шаг 2
         тут шаг 3
