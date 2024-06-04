@@ -9,7 +9,7 @@ from test_library.test_params import BaseUrlRequests as BUR
 
 @pytest.mark.smoke
 @allure.feature("проверка авторизации ")
-# @allure.description("проверка авторизации с корректными данными")
+@allure.description("проверка авторизации с корректными данными")
 class Test:
     def test_correct_auth(self):
         """
@@ -19,7 +19,7 @@ class Test:
     тут шаг 2
     тут шаг 3
     тут шаг 4
-2
+    2
     3
     """
         url_2 = "/v1/balances"
