@@ -29,8 +29,8 @@ class BaseUrlRequests:
                 request_body=""):
         response = requests.get(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        with allure.step(f"GET response: {response}"):
-            return response
+        # with allure.step(f"GET response: {response}"):
+        return response
 
     def url_post(self, url_2="",
                  url_3="",
@@ -40,8 +40,8 @@ class BaseUrlRequests:
                  request_body=""):
         response = requests.post(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                  headers=request_headers, json=request_body)
-        with allure.step(f"POST response: {response}"):
-            return response
+        # with allure.step(f"POST response: {response}"):
+        return response
 
     def url_put(self, url_2="",
                 url_3="",
@@ -51,8 +51,8 @@ class BaseUrlRequests:
                 request_body=""):
         response = requests.put(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
-        with allure.step(f"PUT response: {response}"):
-            return response
+        # with allure.step(f"PUT response: {response}"):
+        return response
 
     def url_delete(self, url_2="",
                    url_3="",
@@ -62,5 +62,5 @@ class BaseUrlRequests:
                    request_body=""):
         response = requests.delete(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                    headers=request_headers, json=request_body)
-        with allure.step(f"DELETE response: {response}"):
-            return response
+        # with allure.step(f"DELETE response: {response}"):
+        return response

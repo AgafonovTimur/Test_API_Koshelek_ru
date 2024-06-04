@@ -15,10 +15,13 @@ def test_run(playwright: Playwright) -> None:
     #     print("test message 1")
 
     page.goto("https://www.google.com/")
-    assert page.url == "https://www.google.com/"
-    response = page.request.get('https://www.google.com/')
-    expect(response).to_be_ok()
-    print(response)
+    # assert page.url == "https://www.google.com/"
+    # response = page.request.get('https://www.google.com/')
+    # expect(response.json()).to_be_ok()
+    with page.expect_response("https://www.google.com/") as response:
+        # print(response.url)
+        print(response.value.json())
+        # print(response.headers)
     # page.on("response", handler)
     page.wait_for_timeout(100)
     page.get_by_label("Найти").click()

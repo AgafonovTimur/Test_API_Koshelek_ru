@@ -34,12 +34,15 @@ class Test:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,url_clientSecret_params)
 
         '''
-        описание теста 2
-        тут шаг 1 
-        тут шаг 2
-        тут шаг 3
-        тут шаг 4
-        '''
+        
+    описание теста 2
+    тут шаг 1 
+    тут шаг 2
+    тут шаг 3
+    тут шаг 4
+    
+    '''
+
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], False)
         Assertions.json_result_error(response.json()["result"]["error"], "SignatureNotValid")
