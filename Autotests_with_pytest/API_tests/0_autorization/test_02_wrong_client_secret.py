@@ -11,15 +11,7 @@ import pytest
 @allure.feature("проверка авторизации")
 # @allure.description("проверка авторизации с некорректным данными")
 class Test:
-    '''
 
-    описание теста 2
-    тут шаг 1
-    тут шаг 2
-    тут шаг 3
-    тут шаг 4
-
-    '''
     @pytest.mark.parametrize(
         "url_clientSecret_params",
         [
@@ -34,6 +26,16 @@ class Test:
         ]
     )
     def test_wrong_secret(self, url_clientSecret_params):
+        '''
+    1
+    описание теста 2
+    тут шаг 1
+    тут шаг 2
+    тут шаг 3
+    тут шаг 4
+    2
+    3
+    '''
 
         url_2 = "/v1/balances"
 
