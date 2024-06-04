@@ -9,7 +9,7 @@ import pytest
 
 #  add no client secret
 @allure.feature("проверка авторизации")
-@allure.description("проверка авторизации с некорректным данными")
+# @allure.description("проверка авторизации с некорректным данными")
 class Test:
     @pytest.mark.parametrize(
         "url_clientSecret_params",
