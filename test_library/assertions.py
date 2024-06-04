@@ -42,10 +42,10 @@ class Assertions:
     def json_name_equal_to_expected_result_name(actual_result_name, expected_result, eql):
         if debug_log_true.debug_true:
             print(f"Expected json_name: {expected_result}, got {actual_result_name}")
-        if eql == True:
+        if eql:
             with allure.step(f"Name check. Expected {expected_result}, got {actual_result_name}"):
                 assert actual_result_name == expected_result, f"Expected {expected_result}, got {actual_result_name}"
-        elif eql == False:
+        elif not eql:
             with allure.step(f"Name check. Expected {expected_result}, got {actual_result_name}"):
                 assert actual_result_name != expected_result, f"Expected {expected_result}, got {actual_result_name}"
         else:
