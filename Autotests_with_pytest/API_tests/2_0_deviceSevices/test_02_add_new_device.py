@@ -37,7 +37,7 @@ class Test:
             pass
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
                                  self.request_body)
             print(f"response name: {actual_result_name} is correct. All good")

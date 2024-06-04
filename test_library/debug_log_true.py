@@ -7,7 +7,6 @@ class DebugLogs():
     @staticmethod
     def debug_logs(file_name, response_json, status_code, url, url_2, url_3=None, url_currency=None,
                    url_clientSecret=None,request_headers="", request_body=""):
-        url_base = "https://p2psys-publicoffice.konomik.com"
         print("\033[92m" + "\n" + file_name + "\n" + "\033[94m")
         print("----------------------------------------Request---------------------------------------")
         print("\033[93m" + "\n" + url)

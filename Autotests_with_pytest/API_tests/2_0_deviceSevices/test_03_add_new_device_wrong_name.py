@@ -20,7 +20,7 @@ class Test:
     def test_add_new_device_wrong_name(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_get(self, url_2, request_body=self.request_body)
+        response = BUR.url_post(self, url_2, request_body=self.request_body)
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"

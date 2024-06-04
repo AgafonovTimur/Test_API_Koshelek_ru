@@ -33,7 +33,7 @@ class Test:
         device_id = json.dumps(response.json().get("id"))
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
                                  self.request_body)
 
@@ -50,7 +50,7 @@ class Test:
         response2 = BUR.url_put(self, url_2, url_3=device_id, request_body=self.request_body2)
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
                                  response2.url, url_2, device_id, self.request_body)
 
@@ -65,7 +65,7 @@ class Test:
         response3 = BUR.url_get(self, url_2, url_3=device_id, request_body=self.request_body2)
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response3.json(), response3.status_code, response3.url,
                                  url_2, device_id, self.request_body)
 

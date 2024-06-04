@@ -20,7 +20,7 @@ class Test:
     def test_add_new_device(self):
         url_2 = "/v1/devices"
 
-        response = BUR.url_post(self, url_2, request_body=self.request_body)
+        response = BUR.url_get(self, url_2, request_body=self.request_body)
 
         actual_result_name = response.json().get("name")
         expected_result_name = "siemens mobile"
@@ -35,12 +35,12 @@ class Test:
             pass
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
                                  self.request_body)
             print(f"response name: {actual_result_name} is correct. All good")
 
-        Assertions.status_code_check(response.status_code, 2000)
+        Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], True)
         Assertions.json_result_errorData(response.json()["result"]["errorData"], {})
         Assertions.json_name_equal_to_expected_result_name(actual_result_name,

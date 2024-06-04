@@ -13,7 +13,7 @@ import pytest
 @allure.description("проверка авторизации с некорректными данными")
 class Test:
     @pytest.mark.parametrize(
-        "request_headers1_params",
+        "request_headers_params",
         [
             {
                 "Content-Type": "application/json",
@@ -59,15 +59,15 @@ class Test:
             },
         ],
     )
-    def test_wrong_id(self, request_headers1_params):
+    def test_wrong_id(self, request_headers_params):
         url_2 = "/v1/balances"
 
-        response = BUR.url_get(self, url_2, request_headers=request_headers1_params)
+        response = BUR.url_get(self, url_2, request_headers=request_headers_params)
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
-                                 request_headers1_params)
+                                 request_headers_params)
 
         Assertions.status_code_check(response.status_code, 200)
         Assertions.json_result_success(response.json()["result"]["success"], False)

@@ -27,7 +27,7 @@ class Test:
         device_id = json.dumps(response.json().get("id"))
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url, url_2,
                                  self.request_body)
 
@@ -44,7 +44,7 @@ class Test:
         device_id2 = json.dumps(response2.json().get("id"))
 
         # debug log displays if debug_true = True
-        if debug_log_true.debug_true == True:
+        if debug_log_true.debug_true:
             DebugLogs.debug_logs(os.path.basename(__file__), response2.json(), response2.status_code,
                                  response2.url, url_2, device_id)
 
