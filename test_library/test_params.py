@@ -31,6 +31,8 @@ class BaseUrlRequests:
             request_headers = {"Content-Type": "application/json", "ClientId": clientId}
         response = requests.get(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
+        with allure.step("Used method GET"):
+            pass
         return response
 
     def url_post(self, url_2="",
@@ -43,6 +45,8 @@ class BaseUrlRequests:
             request_headers = {"Content-Type": "application/json", "ClientId": clientId}
         response = requests.post(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                  headers=request_headers, json=request_body)
+        with allure.step("Used method POST"):
+            pass
         return response
 
     def url_put(self, url_2="",
@@ -55,6 +59,8 @@ class BaseUrlRequests:
             request_headers = {"Content-Type": "application/json", "ClientId": clientId}
         response = requests.put(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                 headers=request_headers, json=request_body)
+        with allure.step("Used method PUT"):
+            pass
         return response
 
     def url_delete(self, url_2="",
@@ -67,4 +73,6 @@ class BaseUrlRequests:
             request_headers = {"Content-Type": "application/json", "ClientId": clientId}
         response = requests.delete(f"{url_base}{url_2}{url_3}?{url_currency}{url_signature}{url_clientSecret}",
                                    headers=request_headers, json=request_body)
+        with allure.step("Used method DELETE"):
+            pass
         return response
