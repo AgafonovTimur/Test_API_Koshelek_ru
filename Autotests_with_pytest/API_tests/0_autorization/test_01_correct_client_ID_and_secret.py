@@ -11,10 +11,7 @@ from test_library.test_params import BaseUrlRequests as BUR
 @allure.feature("проверка авторизации ")
 # @allure.description("проверка авторизации с корректными данными")
 class Test:
-    def test_correct_auth(self):
-        """
-
-        23
+    '''
 
     описание теста 1
     тут шаг 1
@@ -22,7 +19,9 @@ class Test:
     тут шаг 3
     тут шаг 4
 
-    """
+    '''
+    def test_correct_auth(self):
+
         url_2 = "/v1/balances"
 
         response = BUR.url_get(self, url_2=url_2)
