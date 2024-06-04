@@ -1,5 +1,5 @@
 import os
-from playwright.sync_api import Playwright
+from playwright.sync_api import Playwright, expect
 
 
 def test_run(playwright: Playwright) -> None:
@@ -16,6 +16,10 @@ def test_run(playwright: Playwright) -> None:
 
     page.goto("https://www.google.com/")
     assert page.url == "https://www.google.com/"
+    response = page.request.get('https://www.google.com/')
+    expect(response).to_be_ok()
+    print(response)
+    # page.on("response", handler)
     page.wait_for_timeout(100)
     page.get_by_label("Найти").click()
     page.get_by_label("Найти").fill("playwrite documentation")
