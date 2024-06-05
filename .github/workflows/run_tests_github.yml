@@ -44,12 +44,12 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - name: Run tests
-        run: python -m pytest --browser-channel chrome --alluredir=allure-results
+        run: python -m pytest --browser-channel chrome --alluredir=allure_results
 #        run: python -m pytest --alluredir=allure_results
-      - name : Save allure results
+      - name : Save allure_results
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results
+          name: allure_results
           path:
             allure_results
           retention-days: 1
