@@ -1,13 +1,11 @@
 
 stages:
     - test
-#    - test_UI
     - report
 
 
 run_tests:
     stage: test
-#    image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
     image: python
     artifacts:
         when: always
@@ -33,11 +31,6 @@ run_tests:
         - python -m pytest --alluredir=allure-results
     after_script:
         - allure generate -c allure-results -o allure-report
-
-#run_test_UI:
-#    stage: test_UI
-#    image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
-#        script:
 
 pages:
     stage: report
