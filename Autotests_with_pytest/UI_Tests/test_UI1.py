@@ -3,26 +3,23 @@ from test_library import test_params, debug_log_true
 from test_library.debug_log_true import DebugLogs
 import os
 import allure
-import pytest
-
 
 
 @allure.feature("UI test")
 # @allure.description("playwright test")
-def test_PW_UI(playwright: Playwright) -> None:
+def test_pw_UI(playwright: Playwright) -> None:
     """
     step 1
     step 2
     step 3
     """
-    browser = playwright.chromium.launch(channel='chrome', headless=False)
+    browser = playwright.chromium.launch(channel='chrome', headless=True)
     context = browser.new_context()
     page = context.new_page()
 
     if debug_log_true.debug_true:
         DebugLogs.debug_logs(os.path.basename(__file__), "",
                              "response.status_code", "response.url", "url_2", method="GET")
-
 
     # debug log displays if debug_true = True
     # if debug_log_true.debug_true:
@@ -45,9 +42,9 @@ def test_PW_UI(playwright: Playwright) -> None:
     # response = page.request.get('https://www.google.com/')
     # expect(response.json()).to_be_ok()
     # with page.expect_response("https://www.google.com/") as response:
-        # print(response.url)
-        # print(response.value)
-        # print(response.headers)
+    # print(response.url)
+    # print(response.value)
+    # print(response.headers)
     # page.on("response", handler)
     # page.wait_for_timeout(100000)
     # page.get_by_label("Найти").click()
@@ -61,9 +58,6 @@ def test_PW_UI(playwright: Playwright) -> None:
     # ---------------------
     context.close()
     browser.close()
-
-
-
 
 # with sync_playwright() as playwright:
 #     test_run(playwright)

@@ -25,7 +25,6 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,6 +41,7 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
       - name: Run tests
+        continue-on-error: true
         run: python -m pytest --browser-channel chrome --alluredir=allure_results
 #        run: python -m pytest --alluredir=allure_results
       - name : Save allure_results
