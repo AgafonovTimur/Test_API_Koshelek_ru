@@ -15,7 +15,7 @@ def test_PW_UI(playwright: Playwright) -> None:
     step 2
     step 3
     """
-    browser = playwright.chromium.launch(channel='chrome', headless=True)
+    browser = playwright.chromium.launch(channel='chrome', headless=False)
     context = browser.new_context()
     page = context.new_page()
 
