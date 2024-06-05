@@ -15,7 +15,7 @@ def test_run(playwright: Playwright) -> None:
     step 2
     step 3
     """
-    browser = playwright.chromium.launch(channel='chrome', headless=False)
+    browser = playwright.chromium.launch(channel='chrome', headless=True)
     context = browser.new_context()
     page = context.new_page()
 
