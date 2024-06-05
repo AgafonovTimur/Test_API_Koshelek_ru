@@ -30,7 +30,7 @@ jobs:
     if: always()
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -47,7 +47,7 @@ jobs:
         run: python -m pytest --browser-channel chrome --alluredir=allure-results
 #        run: python -m pytest --alluredir=allure_results
       - name : Save allure results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path:
@@ -59,7 +59,7 @@ jobs:
     needs: test
     name: Generate allure report
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
@@ -68,7 +68,7 @@ jobs:
         uses: actions/download-artifact@v3
       - run: allure generate -c allure_results -o _site #_site - дефолтная папка для отчетов allure
       - name : Save generated allure report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: _site
           path:
