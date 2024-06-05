@@ -8,7 +8,7 @@ import pytest
 
 
 @allure.feature("UI test")
-@allure.description("playwright test")
+# @allure.description("playwright test")
 def test_PW_UI(playwright: Playwright) -> None:
     """
     step 1
