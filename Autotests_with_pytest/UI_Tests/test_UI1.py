@@ -1,9 +1,12 @@
-import os
 from playwright.sync_api import Playwright, expect
 
 
 def test_run(playwright: Playwright) -> None:
-
+    """
+    step 1
+    step 2
+    step 3
+    """
     browser = playwright.chromium.launch(channel='chrome', headless=False)
     context = browser.new_context()
     page = context.new_page()
