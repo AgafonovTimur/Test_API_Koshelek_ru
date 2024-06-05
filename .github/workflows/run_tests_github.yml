@@ -25,6 +25,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
