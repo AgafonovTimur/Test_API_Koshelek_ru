@@ -7,8 +7,8 @@ stages:
 
 run_tests:
     stage: test
-    image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
-#    image: python
+#    image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
+    image: python
     artifacts:
         when: always
         expire_in: 5 days
