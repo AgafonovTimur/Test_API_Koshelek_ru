@@ -1,6 +1,14 @@
 from playwright.sync_api import Playwright, expect
+from test_library import test_params, debug_log_true
+from test_library.debug_log_true import DebugLogs
+import os
+import allure
+import pytest
 
 
+
+@allure.feature("UI test")
+@allure.description("playwright test")
 def test_run(playwright: Playwright) -> None:
     """
     step 1
@@ -11,6 +19,11 @@ def test_run(playwright: Playwright) -> None:
     context = browser.new_context()
     page = context.new_page()
 
+    if debug_log_true.debug_true:
+        DebugLogs.debug_logs(os.path.basename(__file__), "",
+                             "response.status_code", "response.url", "url_2", method="GET")
+
+
     # debug log displays if debug_true = True
     # if debug_log_true.debug_true:
     #     debug_log_true.debug_logs(os.path.basename(__file__), response.json(), response.status_code, response.url)
@@ -20,6 +33,9 @@ def test_run(playwright: Playwright) -> None:
     # context = browser.new_context()
     # page = context.new_page()
     page.goto("https://playwright.dev/python/")
+    expect(page.locator("h1")).to_contain_text("Playwright enables reliable end-to-end testing for modern web apps.")
+    # await response.json();
+
     # page.get_by_role("link", name="Get started").click()
     # page.get_by_role("link", name="How to install Playwright").click()
 
@@ -33,7 +49,7 @@ def test_run(playwright: Playwright) -> None:
         # print(response.value)
         # print(response.headers)
     # page.on("response", handler)
-    page.wait_for_timeout(100)
+    # page.wait_for_timeout(100000)
     # page.get_by_label("Найти").click()
     # page.get_by_label("Найти").fill("playwrite documentation")
     # page.get_by_label("Найти").press("Enter")
@@ -45,6 +61,7 @@ def test_run(playwright: Playwright) -> None:
     # ---------------------
     context.close()
     browser.close()
+
 
 
 

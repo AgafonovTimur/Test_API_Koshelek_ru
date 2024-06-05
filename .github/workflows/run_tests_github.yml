@@ -21,10 +21,12 @@ permissions:
   pages: write
   id-token: write
 
-# windows-latest
+# ubuntu-latest
 jobs:
   test:
     runs-on: ubuntu-latest
+#    container:
+#      image: mcr.microsoft.com/playwright/python:v1.44.0-jammy
     if: always()
     steps:
       - name: Checkout repository
@@ -33,14 +35,17 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-#        name: 'Install Chrome'
-#        run: sudo apt-get install google-chrome-stable
+      - name: 'Install Chrome'
+        run: sudo apt-get install google-chrome-stable
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Ensure browsers are installed
+        run: python -m playwright install --with-deps
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - name: Run tests
-        run: python -m pytest --alluredir=allure_results
+        run: python -m pytest --browser-channel chrome --alluredir=allure-results
+#        run: python -m pytest --alluredir=allure_results
       - name : Save allure results
         uses: actions/upload-artifact@v3
         with:
