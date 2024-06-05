@@ -33,7 +33,7 @@ def test_run(playwright: Playwright) -> None:
     # context = browser.new_context()
     # page = context.new_page()
     page.goto("https://playwright.dev/python/")
-    expect(page.locator("h1")).to_contain_text("Playwright enables reliable end-to-end testing for modern web apps.")
+    expect(page.locator("h1")).to_contain_text("Playwright1 enables reliable end-to-end testing for modern web apps.")
     # await response.json();
 
     # page.get_by_role("link", name="Get started").click()
