@@ -21,7 +21,7 @@ run_tests_ui:
 #        - wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz && tar -zxvf allure-2.25.0.tgz -C /opt/ && ln -s /opt/allure-2.25.0/bin/allure /usr/bin/allure
 #        - pip install -r requirements.txt
 #        - pip install pytest
-        - python -m playwright install --with-deps
+        - playwright install --with-deps
     allow_failure: true
     script:
 #        - python -m pytest -k "smoke" --alluredir=allure-results
