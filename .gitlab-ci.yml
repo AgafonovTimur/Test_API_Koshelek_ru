@@ -6,8 +6,6 @@ stages:
 
 run_tests:
     stage: test
-    needs:
-        - run_tests_ui
 #    image: mcr.microsoft.com/playwright:v1.44.1-jammy
     image: python
     artifacts:
@@ -37,6 +35,8 @@ run_tests:
 
 pages:
     stage: report
+    needs:
+        - run_tests
     script:
         - mkdir public
         - cp -r allure-report/* public
