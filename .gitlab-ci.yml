@@ -37,8 +37,6 @@ run_tests:
 
 pages:
     stage: report
-    needs:
-        - run_tests
     script:
         - mkdir public
         - cp -r allure-report/* public
