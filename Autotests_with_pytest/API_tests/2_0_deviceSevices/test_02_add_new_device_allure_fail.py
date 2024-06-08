@@ -5,8 +5,10 @@ from test_library.assertions import Assertions
 from test_library.test_params import BaseUrlRequests as BUR
 import allure
 
+
 @allure.feature("Устройства")
-@allure.description("создать новое устройство")
+@allure.description(
+    "создать новое устройство. fail потому что метод GET, а не POST, сделано специально для Allure repoort")
 class Test:
     request_body = {
         "name": "siemens mobile",

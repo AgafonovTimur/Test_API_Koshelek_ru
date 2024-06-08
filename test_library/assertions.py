@@ -6,7 +6,7 @@ class Assertions:
     @staticmethod
     def status_code_check(response: object, status_code: int):
         if debug_log_true.debug_true:
-            print(f"Expected response code: {status_code}, got {status_code}")
+            print(f"Expected response code: {status_code}, got {response}")
         with allure.step(f"Response code check. Expected {status_code}, got {response}"):
             assert response == status_code, f"Expected {status_code}, got {response}"
 

@@ -8,6 +8,7 @@ url_clientSecret = "18c7652ba591431881391cba29f08fd6bcb2cdc6cbe646ff9d6b03d2f152
 # request_headers1 = {'Content-Type': 'application/json', 'ClientId': clientId}
 url_currency = "currency=RUB"
 url_signature = "&signature="
+no_gui = False
 
 
 # ? description of URL link

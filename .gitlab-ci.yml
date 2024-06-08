@@ -28,7 +28,7 @@ run_tests:
     allow_failure: true
     script:
 #        - python -m pytest -k "smoke" --alluredir=allure-results
-        - python -m pytest --alluredir=allure-results
+        - python -m pytest --alluredir=allure-results --headed --browser-channel chrome
     after_script:
         - allure generate -c allure-results -o allure-report
 

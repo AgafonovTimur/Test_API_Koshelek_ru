@@ -1,0 +1,14 @@
+wrong_login_password_params = [
+        ("admin", "password"),
+        ("admin1", "password"),
+        ("admin", "password1"),
+        ("^^^^^", "!!!!!!")
+]
+
+
+@pytest.mark.parametrize("login, password", wrong_login_password_params)
+def test_login_correct(playwright: Playwright, login, password) -> None:
+    page.get_by_label("login").fill(login)
+    page.get_by_label("login").press("Tab")
+    page.get_by_label("password").fill(password)
+

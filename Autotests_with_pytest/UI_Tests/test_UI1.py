@@ -1,5 +1,6 @@
 from playwright.sync_api import Playwright, expect
 from test_library import test_params, debug_log_true
+from test_library.test_params import no_gui
 from test_library.debug_log_true import DebugLogs
 import os
 import allure
@@ -13,7 +14,7 @@ def test_pw_UI(playwright: Playwright) -> None:
     step 2
     step 3
     """
-    browser = playwright.chromium.launch(channel='chrome', headless=True)
+    browser = playwright.chromium.launch(channel='chrome', headless=no_gui)
     context = browser.new_context()
     page = context.new_page()
 

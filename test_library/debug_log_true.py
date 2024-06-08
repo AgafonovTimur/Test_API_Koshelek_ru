@@ -3,7 +3,7 @@ import json
 debug_true = True
 
 
-class DebugLogs():
+class DebugLogs:
     if debug_true:
         @staticmethod
         def debug_logs(file_name, response_json, status_code, url, url_2, url_3=None, url_currency=None,
