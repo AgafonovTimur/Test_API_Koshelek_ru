@@ -12,7 +12,7 @@ run_tests_ui:
 #        expire_in: 5 days
 #        paths:
 #            - allure-report
-    before_script:
+#    before_script:
         # - 'curl --location --output artifacts.zip "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/artifacts/main/download?job=pages&job_token=$CI_JOB_TOKEN"'
 
 #        - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -21,7 +21,7 @@ run_tests_ui:
 #        - wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz && tar -zxvf allure-2.25.0.tgz -C /opt/ && ln -s /opt/allure-2.25.0/bin/allure /usr/bin/allure
 #        - pip install -r requirements.txt
 #        - pip install pytest
-        - playwright install --with-deps
+#        - playwright install --with-deps
     allow_failure: true
     script:
 #        - python -m pytest -k "smoke" --alluredir=allure-results
