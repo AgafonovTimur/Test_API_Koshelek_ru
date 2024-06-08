@@ -3,16 +3,9 @@ stages:
     - test
     - report
 
-add_playwright_image:
-    image: mcr.microsoft.com/playwright:v1.44.1-jammy
-    script:
-        - echo "xDD"
-
 
 run_tests:
     stage: test
-    needs:
-        - add_playwright_image
 #    image: mcr.microsoft.com/playwright:v1.44.1-jammy
     image: python
     artifacts:
