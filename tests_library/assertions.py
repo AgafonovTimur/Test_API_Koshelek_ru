@@ -1,4 +1,4 @@
-from test_library import debug_log_true
+from tests_library import debug_log_true
 import allure
 
 

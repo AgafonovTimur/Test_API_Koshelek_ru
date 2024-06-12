@@ -1,10 +1,10 @@
 # check list of operations
 import os
 import requests
-from test_library import test_params, debug_log_true
-from test_library.debug_log_true import DebugLogs
-from test_library.assertions import Assertions
-from test_library.test_params import BaseUrlRequests as BUR
+from tests_library import tests_params, debug_log_true
+from tests_library.debug_log_true import DebugLogs
+from tests_library.assertions import Assertions
+from tests_library.tests_params import BaseUrlRequests as BUR
 import allure
 
 
